@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminPasswordUpdateRequest;
 use App\Http\Requests\AdminProfileUpdateRequest;
 use App\Models\Admin;
 use App\Traits\FileUploadTrait;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+Use Alert;
 
 class ProfileController extends Controller
 {
@@ -15,7 +18,7 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $user = Auth::guard('admin')->user();
 
@@ -23,41 +26,9 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(AdminProfileUpdateRequest $request, string $id)
+    public function update(AdminProfileUpdateRequest $request, string $id): RedirectResponse
     {
         $user = Admin::findOrFail($id);
         $oldImagePath = null;
@@ -75,17 +46,24 @@ class ProfileController extends Controller
         $user->image = !empty($imagePath) ? $imagePath : $oldImagePath;
         $user->name = $request->name;
         $user->email = $request->email;
-
         $user->save();
+
+        toast(__('Profile has been updated successfully'), __('success'))->width('400');
 
         return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Atualizando a senha do usuario
      */
-    public function destroy(string $id)
+    public function passwordUpdate(AdminPasswordUpdateRequest $request, string $id): RedirectResponse
     {
-        //
+        $admin = Admin::findOrFail($id);
+        $admin->password = bcrypt($request->password);
+        $admin->save();
+
+        toast(__('Updated successfully'), __('success'))->width('400');
+
+        return redirect()->back();
     }
 }

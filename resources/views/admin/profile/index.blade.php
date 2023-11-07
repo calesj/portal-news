@@ -8,8 +8,13 @@
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                 <div class="breadcrumb-item">{{ __('Profile') }}</div>
             </div>
+
         </div>
         <div class="section-body">
+            <h2 class="section-title">{{ __('Hi') }}, {{ $user->name }}</h2>
+            <p class="section-lead">
+                {{ __('Change information about yourself on this page.') }}
+            </p>
             <div class="row mt-sm-4">
                 <div class="col-12 col-md-6">
                     <div class="card">
@@ -69,34 +74,47 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="card">
-                        <form method="post" class="needs-validation" novalidate="">
+                        <form method="post" action="{{ route('admin.profile-password.update', $user->id) }}" class="needs-validation" novalidate="">
+                            @csrf
+                            @method('PUT')
                             <div class="card-header">
                                 <h4>{{ __('Update Password') }}</h4>
                             </div>
                             <div class="card-body">
-
                                 <div class="form-group col-12">
                                     <label>{{ __('Old Password')  }}</label>
-                                    <input type="password" class="form-control" value="" required="">
+                                    <input type="password" class="form-control" value="" required=""
+                                    name="current_password">
                                     <div class="invalid-feedback">
-                                        {{ __('Please fill in the first name') }}
+                                        {{ __('Please fill in the current password') }}
                                     </div>
+                                    @error('current_password')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-12">
                                     <label>{{ __('New Password') }}</label>
-                                    <input type="password" class="form-control" value="" required="">
+                                    <input type="password" class="form-control" value="" required=""
+                                    name="password">
                                     <div class="invalid-feedback">
-                                        {{ __('Please fill in the email') }}
+                                        {{ __('Please fill in the new password') }}
                                     </div>
+                                    @error('password')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-12">
                                     <label>{{ __('Confirmed Password') }}</label>
-                                    <input type="password" class="form-control" value="" required="">
+                                    <input type="password" class="form-control" value="" required=""
+                                    name="password_confirmation">
                                     <div class="invalid-feedback">
-                                        {{ __('Please fill in the email') }}
+                                        {{ __('Please fill in the confirmed password') }}
                                     </div>
+                                    @error('password_confirmation')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                             </div>

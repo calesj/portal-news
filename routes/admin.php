@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     /** profile routes */
+    Route::put('profile-password-update/{id}', [ProfileController::class, 'passwordUpdate'])
+        ->name('profile-password.update');
     Route::resource('profile', ProfileController::class);
 });
 
