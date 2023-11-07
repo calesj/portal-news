@@ -74,7 +74,7 @@ class AdminAuthController extends Controller
         /** enviando o token, e o email como parametro, para podermos utiliza-los na view de e-mail */
         Mail::to($request->email)->send(new AdminSendResetLinkMail($token, $admin->email));
 
-        return redirect()->back()->with('success', 'A mail has been sent to your email address. Please check');
+        return redirect()->back()->with('success', __('A mail has been sent to your email address. Please check'));
     }
 
     /** renderiza a view de alteração de senha */
@@ -92,7 +92,7 @@ class AdminAuthController extends Controller
         $admin = Admin::where(['email' => $request->email, 'remember_token' => $request->token])->first();
 
         if (!$admin) {
-            return back()->with('error', 'Token invalid or expirated');
+            return back()->with('error', __('Token invalid or expirated'));
         }
 
         $admin->password = bcrypt($request->password);
@@ -100,7 +100,7 @@ class AdminAuthController extends Controller
 
         $admin->save();
 
-        return redirect()->route('admin.login.get')->with('success', 'successfull reset password');
+        return redirect()->route('admin.login.get')->with('success', __('successfull reset password'));
     }
 }
 

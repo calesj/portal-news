@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,9 +27,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         ->name('reset-password.send');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
-    Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth'], function () {
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+    /** profile routes */
+    Route::resource('profile', ProfileController::class);
 });
 
 
