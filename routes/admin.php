@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +42,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     /** Language Routes */
     Route::resource('language', LanguageController::class);
 
-    /** Category routes */
-    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+    /** Category Routes */
+    Route::resource('category', CategoryController::class);
+
+    /** News Routes */
+    Route::resource('news', NewsController::class);
 });
 
 
