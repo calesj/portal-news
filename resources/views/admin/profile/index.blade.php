@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
-
+@php
+@endphp
 @section('content')
     <section class="section">
         <div class="section-header">

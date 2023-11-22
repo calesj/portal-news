@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Language;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -12,5 +11,10 @@ class NewsController extends Controller
     {
         $languages = Language::all();
         return view('admin.news.index', compact('languages'));
+    }
+
+    public function create()
+    {
+        return view('admin.news.create');
     }
 }
