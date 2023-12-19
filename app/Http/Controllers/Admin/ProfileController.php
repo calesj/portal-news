@@ -33,10 +33,6 @@ class ProfileController extends Controller
         $user = Admin::findOrFail($id);
         $oldImagePath = null;
 
-        if ($user->image) {
-            $oldImagePath = $user->image;
-        }
-
         /** Se existir uma imagem no request, ele vai mover pra um diretorio publico, e retornar o caminho da imagem */
         $imagePath = $this->handleFileUpload($request, 'image', $oldImagePath);
 
