@@ -21,7 +21,6 @@ class ProfileController extends Controller
     public function index(): View
     {
         $user = Auth::guard('admin')->user();
-
         return view('admin.profile.index', compact('user'));
     }
 
