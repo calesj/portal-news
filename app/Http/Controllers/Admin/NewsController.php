@@ -7,6 +7,7 @@ use App\Http\Requests\AdminNewsCreateRequest;
 use App\Models\Category;
 use App\Models\Language;
 use App\Models\News;
+use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -46,9 +47,8 @@ class NewsController extends Controller
         return view('admin.news.create', compact('languages'));
     }
 
-    public function store(Request $request)
+    public function store(AdminNewsCreateRequest $request)
     {
-        dd($request->all());
         /** Handle Image */
         $imagePath = $this->handleFileUpload($request, 'image');
 
@@ -67,6 +67,19 @@ class NewsController extends Controller
         $news->show_at_popular = $request->show_at_popular == 1 ? 1 : 0;
         $news->status = $request->status == 1 ? 1 : 0;
         $news->save();
+
+        /** transformando as tags em itens de um array */
+        $tags = explode(',', $request->tags);
+        $tagIds = [];
+
+        foreach ($tags as $tag) {
+            $item = Tag::firstOrCreate(['name' => $tag]);
+            $tagIds[] = $item->id;
+        }
+
+        dd($tagIds);
+
+        $news->tags()->attach($tagIds);
 
         toast(__('Created SuccessFully!'), 'success')->width('200');
 

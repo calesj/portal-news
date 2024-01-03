@@ -30,7 +30,7 @@ class ProfileController extends Controller
     public function update(AdminProfileUpdateRequest $request, string $id): RedirectResponse
     {
         $user = Admin::findOrFail($id);
-        $oldImagePath = null;
+        $oldImagePath = $user->image;
 
         /** Se existir uma imagem no request, ele vai mover pra um diretorio publico, e retornar o caminho da imagem */
         $imagePath = $this->handleFileUpload($request, 'image', $oldImagePath);
