@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>General Dashboard &mdash; Stisla</title>
 
@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('admin/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 
     <!-- Template CSS -->
@@ -62,7 +63,8 @@
 <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script
+    src="{{ asset('admin/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
@@ -94,8 +96,20 @@
         }
     });
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
     // Handle Dynamic delete
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.delete-item').on('click', function (e) {
             e.preventDefault();
             Swal.fire({
@@ -114,14 +128,14 @@
                         method: 'delete',
                         url: url,
                         success: function (data) {
-                            if(data.status === 'success') {
+                            if (data.status === 'success') {
                                 Swal.fire({
                                     title: "Deleted!",
                                     text: data.message,
                                     icon: "success"
                                 });
                                 window.location.reload()
-                            } else if(data.status === 'error'){
+                            } else if (data.status === 'error') {
                                 Swal.fire({
                                     title: "Error!",
                                     text: data.message,
@@ -129,7 +143,7 @@
                                 });
                             }
                         },
-                        error: function(xhr, status, error) {
+                        error: function (xhr, status, error) {
                             console.error(data)
                         }
                     })

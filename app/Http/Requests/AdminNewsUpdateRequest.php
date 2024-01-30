@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminNewsCreateRequest extends FormRequest
+class AdminNewsUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +21,14 @@ class AdminNewsCreateRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $newsId = $this->route('news');
+
         return [
             'language' => ['required'],
             'category' => ['required'],
-            'image' => ['required', 'max:3000', 'image'],
-            'title' => ['required', 'max:255', 'unique:news,title'],
+            'image' => ['nullable', 'max:3000', 'image'],
+            'title' => ['required', 'max:255', 'unique:news,title,' . $newsId],
             'content' => ['required'],
             'tags' => ['required'],
             'meta_title' => ['max:255'],
