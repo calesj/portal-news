@@ -12,7 +12,7 @@ trait FileUploadTrait
     public function handleFileUpload(Request $request, string $fieldName, ?string $oldPath = null, string $dir = 'uploads'): ?string
     {
         /** Checando se existe um arquivo no request */
-        if(!$request->hasFile($fieldName)) {
+        if (!$request->hasFile($fieldName)) {
             return null;
         }
 
@@ -24,10 +24,18 @@ trait FileUploadTrait
         /** movendo a imagem do request, pra um diretorio publico */
         $file = $request->file($fieldName);
         $extension = $file->getClientOriginalExtension();
-        $updatedfileName = Str::random(30).'.'.$extension;
+        $updatedfileName = Str::random(30) . '.' . $extension;
 
         $file->move(public_path($dir), $updatedfileName);
 
-        return $dir. '/'. $updatedfileName;
+        return $dir . '/' . $updatedfileName;
+    }
+
+    public function deleteFile(string $path): void
+    {
+        /** Deleta a imagem existente */
+        if ($path && File::exists(public_path($path))) {
+            File::delete(public_path($path));
+        }
     }
 }

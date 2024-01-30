@@ -14,7 +14,7 @@
             <div class="card-header">
                 <h4> {{ __('All News') }}</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.news.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"> {{ __('Create New') }} </i>
                     </a>
                 </div>
@@ -62,10 +62,10 @@
                                         @foreach($news as $item)
                                             <tr>
                                                 <td> {{ $item->id }}</td>
-                                                <td> {{ $item->title }}</td>
                                                 <td>
                                                     <img src="{{ asset($item->image) }}" width="100">
                                                 </td>
+                                                <td> {{ $item->title }}</td>
                                                 <td> {{ $item->category->name }}</td>
 
                                                 <td>
@@ -116,6 +116,10 @@
                                                     <a href="{{ route('admin.news.destroy', $item->id) }}"
                                                        class="btn btn-danger delete-item">
                                                         <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('admin.news-copy', $item->id) }}"
+                                                       class="btn btn-primary">
+                                                        <i class="fas fa-copy"></i>
                                                     </a>
                                                 </td>
                                             </tr>

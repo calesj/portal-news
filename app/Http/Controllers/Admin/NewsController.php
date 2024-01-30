@@ -11,8 +11,8 @@ use App\Models\News;
 use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,12 +126,12 @@ class NewsController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(AdminNewsUpdateRequest $request, int $id)
+    public function update(AdminNewsUpdateRequest $request, int $id): RedirectResponse
     {
         $news = News::findOrFail($id);
 
         /** Handle Image */
-        $imagePath = $this->handleFileUpload($request, 'image', $news->image);
+        $imagePath = $this->handleFileUpload($request, 'image');
 
         $news->language = $request->language;
         $news->category_id = $request->category;
@@ -164,5 +164,36 @@ class NewsController extends Controller
         toast(__('Updated SuccessFully!'), 'success')->width('350');
 
         return redirect()->route('admin.news.index');
+    }
+
+    /**
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        $news = News::findOrFail($id);
+
+        $this->deleteFile($news->image);
+        $news->tags()->delete();
+        $news->delete();
+
+        return response()->json(['status' => 'success', 'message' => __('Deleted Successfully!')]);
+    }
+
+    /**
+     * Copy news
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function copyNews(int $id): RedirectResponse
+    {
+        $news = News::findOrFail($id);
+        $copyNews = $news->replicate();
+        $copyNews->save();
+
+        toast(__('Coping Successfully!'), 'success');
+
+        return redirect()->back();
     }
 }
