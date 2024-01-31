@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\Tag;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,9 @@ class HomeController extends Controller
             ->withLocalize()
             ->first();
 
+        $this->countView($news);
+
+        /** noticias criadas recentementes */
         $recentNews = News::with(['category', 'auther'])
             ->where('slug', '!=', $slug)
             ->activeEntries()
@@ -46,11 +50,36 @@ class HomeController extends Controller
             ->orderBy('id', 'DESC')
             ->take(4)->get();
 
+        /** tags mais comuns utilizadas */
         $mostCommonTags = $this->mostCommonTags();
 
-        $this->countView($news);
+        /** proximo post, seguindo a ordem do id */
+        $nextPost = News::where('id', '>', $news->id)
+            ->orderBy('id', 'ASC')
+            ->activeEntries()
+            ->withLocalize()
+            ->first();
 
-        return view('frontend.news-detail', compact('news', 'recentNews', 'mostCommonTags'));
+        /** post anterior, seguindo a ordem do id */
+        $previousPost = News::where('id', '<', $news->id)
+            ->orderBy('id', 'DESC')
+            ->activeEntries()
+            ->withLocalize()
+            ->first();
+
+        /** Posts relacionados */
+        $relatedPosts = News::where('slug', '!=', $news->slug)
+            ->where('category_id', $news->category_id)
+            ->orderBy('id', 'DESC')
+            ->activeEntries()
+            ->withLocalize()
+            ->take(5)
+            ->get();
+
+        return view(
+            'frontend.news-detail',
+            compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts')
+        );
     }
 
     /**
@@ -89,6 +118,10 @@ class HomeController extends Controller
             ->get();
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function handleComment(Request $request): RedirectResponse
     {
         $request->validate([
@@ -102,10 +135,15 @@ class HomeController extends Controller
         $comment->comment = $request->comment;
         $comment->save();
 
+        toast(__('Comment added successfully'), 'success');
         return redirect()->back();
     }
 
-    public function handleReplay(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function handleReplay(Request $request): RedirectResponse
     {
         $request->validate([
             'reply' => ['required', 'string', 'max:1000']
@@ -118,17 +156,22 @@ class HomeController extends Controller
         $comment->comment = $request->reply;
         $comment->save();
 
+        toast(__('Comment added successfully'), 'success');
         return redirect()->back();
     }
 
-    public function commentDestroy(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function commentDestroy(Request $request): JsonResponse
     {
         $comment = Comment::findOrFail($request->id);
         if (Auth::user()->id === $comment->user_id) {
             $comment->delete();
-            return response()->json(['status' => 'success', 'message' => 'Deleted Successfully!']);
+            return response()->json(['status' => 'success', 'message' => __('Deleted Successfully!')]);
         }
 
-        return response()->json(['status' => 'error', 'message' => 'Someting went wrong!']);
+        return response()->json(['status' => 'error', 'message' => __('Someting went wrong!')]);
     }
 }

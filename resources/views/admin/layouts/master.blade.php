@@ -69,8 +69,8 @@
 <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
 <!-- Sweet Alert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @include('sweetalert::alert')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
