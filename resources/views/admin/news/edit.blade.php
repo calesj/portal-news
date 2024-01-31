@@ -63,9 +63,7 @@
 
                     <div class="form-group">
                         <label for="">{{ __('Content') }}</label>
-                        <textarea name="content" class="summernote-simple">
-                            {{ $news->content }}
-                        </textarea>
+                        <textarea name="content" class="summernote-simple">{{ $news->content }}</textarea>
                         @error('content')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -73,7 +71,8 @@
 
                     <div class="form-group">
                         <label for="tags"> {{ __('Tags') }} </label>
-                        <input name="tags" type="text" value="{{ formatTags($news->tags()->pluck('name')->toArray()) }}" class="form-control inputtags">
+                        <input name="tags" type="text" value="{{ formatTags($news->tags()->pluck('name')->toArray()) }}"
+                               class="form-control inputtags">
                         @error('tags')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -89,9 +88,7 @@
 
                     <div class="form-group">
                         <label for="name">{{ __('Meta Description') }}</label>
-                        <textarea name="meta_description" class="form-control">
-                            {{ $news->meta_description }}
-                        </textarea>
+                        <textarea name="meta_description" class="form-control">{{ $news->meta_description }}</textarea>
                         @error('meta_description')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -102,7 +99,8 @@
                             <div class="form-group">
                                 <div class="control-label">{{ __('Status') }}</div>
                                 <label class="custom-switch mt-2">
-                                    <input {{ $news->status === 1 ? 'checked' : '' }} value="1" type="checkbox" name="status" class="custom-switch-input">
+                                    <input {{ $news->status === 1 ? 'checked' : '' }} value="1" type="checkbox"
+                                           name="status" class="custom-switch-input">
                                     <span class="custom-switch-indicator"></span>
                                 </label>
                             </div>
@@ -112,7 +110,8 @@
                             <div class="form-group">
                                 <div class="control-label">{{ __('Is Breaking News') }}</div>
                                 <label class="custom-switch mt-2">
-                                    <input {{ $news->is_breaking_news === 1 ? 'checked' : '' }} value="1" type="checkbox" name="is_breaking_news"
+                                    <input {{ $news->is_breaking_news === 1 ? 'checked' : '' }} value="1"
+                                           type="checkbox" name="is_breaking_news"
                                            class="custom-switch-input">
                                     <span class="custom-switch-indicator"></span>
                                 </label>
@@ -123,7 +122,8 @@
                             <div class="form-group">
                                 <div class="control-label">{{ __('Show At Slider') }}</div>
                                 <label class="custom-switch mt-2">
-                                    <input {{ $news->show_at_slider === 1 ? 'checked' : '' }} value="1" type="checkbox" name="show_at_slider" class="custom-switch-input">
+                                    <input {{ $news->show_at_slider === 1 ? 'checked' : '' }} value="1" type="checkbox"
+                                           name="show_at_slider" class="custom-switch-input">
                                     <span class="custom-switch-indicator"></span>
 
                                 </label>
@@ -133,7 +133,8 @@
                             <div class="form-group">
                                 <div class="control-label">{{ __('Show At Popular') }}</div>
                                 <label class="custom-switch mt-2">
-                                    <input {{ $news->show_at_popular === 1 ? 'checked' : '' }} type="checkbox" name="show_at_popular" value="1" class="custom-switch-input">
+                                    <input {{ $news->show_at_popular === 1 ? 'checked' : '' }} type="checkbox"
+                                           name="show_at_popular" value="1" class="custom-switch-input">
                                     <span class="custom-switch-indicator"></span>
                                 </label>
                             </div>

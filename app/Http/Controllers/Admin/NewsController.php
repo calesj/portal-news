@@ -77,7 +77,11 @@ class NewsController extends Controller
         $tagIds = [];
 
         foreach ($tags as $tag) {
-            $item = Tag::firstOrCreate(['name' => $tag]);
+            $item = new Tag();
+            $item->name = $tag;
+            $item->language = $news->language;
+            $item->save();
+
             $tagIds[] = $item->id;
         }
 
@@ -151,10 +155,17 @@ class NewsController extends Controller
         $tags = explode(',', $request->tags);
         $tagIds = [];
 
+        $news->tags()->delete();
+
         // removendo o vinculo de todas as tags da noticia
         $news->tags()->detach($news->tags);
+
         foreach ($tags as $tag) {
-            $item = Tag::firstOrCreate(['name' => $tag]);
+            $item = new Tag();
+            $item->name = $tag;
+            $item->language = $news->language;
+            $item->save();
+
             $tagIds[] = $item->id;
         }
 

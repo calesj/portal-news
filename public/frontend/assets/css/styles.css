@@ -229,7 +229,7 @@ img {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-    --colorPrimary: #000000;
+    --colorPrimary: teal;
     --paraColor: #808080;
     --colorBlack: #000;
     --colorWhite: #fff;
@@ -16576,7 +16576,7 @@ body.offcanvas-active {
 }
 
 .bg__footer-dark {
-    background-color: var(--colorPrimary);;
+    background-color: #055bc4;
 }
 
 .border-top-5 {

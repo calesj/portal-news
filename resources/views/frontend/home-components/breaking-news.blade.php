@@ -9,7 +9,7 @@
                             <!-- Post Article -->
                             <div class="card__post card__post-list">
                                 <div class="image-sm">
-                                    <a href="./blog_details.html">
+                                    <a href="{{ route('news-details', $news->slug) }}">
                                         <img src="{{ asset($news->image) }}" class="img-fluid" alt="">
                                     </a>
                                 </div>
@@ -21,7 +21,7 @@
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
                                                     <span class="text-primary">
-                                                        {{ __('By') }} {{ $news->auther_id }}
+                                                        {{ __('By') }} {{ $news->auther->name }}
                                                     </span>
                                                 </li>
                                                 <li class="list-inline-item">
@@ -34,8 +34,8 @@
                                         </div>
                                         <div class="card__post__title">
                                             <h6>
-                                                <a href="./blog_details.html">
-                                                    {!! $news->title !!}
+                                                <a href="{{ route('news-details', $news->slug) }}">
+                                                    {!! truncateStr($news->title) !!}
                                                 </a>
                                             </h6>
                                         </div>
@@ -44,8 +44,6 @@
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
