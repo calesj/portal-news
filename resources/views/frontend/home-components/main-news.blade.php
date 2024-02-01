@@ -147,101 +147,30 @@
 
                 <div class="col-md-12 col-lg-4">
                     <aside class="wrapper__list__article">
-                        <h4 class="border_section">popular post</h4>
+                        <h4 class="border_section">{{ __('popular post') }}</h4>
                         <div class="wrapper__list-number">
-
                             <!-- List Article -->
-                            <div class="card__post__list">
-                                <div class="list-number">
+                            @foreach($popularNews as $key => $news)
+                                <div class="card__post__list">
+                                    <div class="list-number">
                                         <span>
-                                            1
+                                            {{ ++$key }}
                                         </span>
+                                    </div>
+                                    <a href="javascript:;" class="category">
+                                        {{ $news->category->name }}
+                                    </a>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <h5>
+                                                <a href="{{ route('news-details', $news->slug) }}">
+                                                    {!! truncateStr($news->title) !!}
+                                                </a>
+                                            </h5>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <a href="#" class="category">
-                                    covid-19
-                                </a>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <h5>
-                                            <a href="#">
-                                                Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T dalam 3 Bulan - CNBC
-                                                Indonesia
-
-                                            </a>
-                                        </h5>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <div class="card__post__list">
-                                <div class="list-number">
-                                        <span>
-                                            2
-                                        </span>
-                                </div>
-                                <a href="#" class="category">
-                                    Startup
-                                </a>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <h5>
-                                            <a href="#">
-                                                Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T dalam 3 Bulan - CNBC
-                                                Indonesia
-
-                                            </a>
-                                        </h5>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- List Article -->
-                            <div class="card__post__list">
-                                <div class="list-number">
-                                        <span>
-                                            1
-                                        </span>
-                                </div>
-                                <a href="#" class="category">
-                                    covid-19
-                                </a>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h5>
-                                            <a href="#">
-                                                Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T dalam 3 Bulan - CNBC
-                                                Indonesia
-
-                                            </a>
-                                        </h5>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-
-                            <div class="card__post__list">
-                                <div class="list-number">
-                                        <span>
-                                            2
-                                        </span>
-                                </div>
-                                <a href="#" class="category">
-                                    Startup
-                                </a>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <h5>
-                                            <a href="#">
-                                                Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T dalam 3 Bulan - CNBC
-                                                Indonesia
-
-                                            </a>
-                                        </h5>
-                                    </li>
-                                </ul>
-                            </div>
+                            @endforeach
                         </div>
                     </aside>
                 </div>
