@@ -29,7 +29,7 @@
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
                                                             <a href="javascript:;">
-                                                                {{ __('By') }} {{ $slider->auther->name }}
+                                                                {{ __('By') }} {{ $slider->author->name }}
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
@@ -72,7 +72,7 @@
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
                                                     <a href="javascript:;">
-                                                        {{ __('By') }} {{ $slider->auther->name }}
+                                                        {{ __('By') }} {{ $slider->author->name }}
                                                     </a>
                                                 </li>
                                                 <li class="list-inline-item">

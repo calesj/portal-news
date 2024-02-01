@@ -47,7 +47,7 @@
                                 <li class="list-inline-item">
                                     {{ __('By') }}
                                     <a href="#">
-                                        {{ $news->auther->name }}
+                                        {{ $news->author->name }}
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
@@ -157,12 +157,12 @@
                         <div class="wrap__profile-author">
                             <figure>
                                 <img style="width: 200px; height: 200px;object-fit: cover;"
-                                     src="{{ asset($news->auther->image) }}"
+                                     src="{{ asset($news->author->image) }}"
                                      alt="" class="img-fluid rounded-circle">
                             </figure>
                             <div class="wrap__profile-author-detail">
                                 <div class="wrap__profile-author-detail-name">{{ __('author') }}</div>
-                                <h4>{{ $news->auther->name }}</h4>
+                                <h4>{{ $news->author->name }}</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad
                                     beatae itaque ea non
                                     placeat officia ipsum praesentium! Ullam?</p>
@@ -293,7 +293,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('news-comment-replay') }}" method="POST">
+                                                        <form action="{{ route('news-comment-reply') }}" method="POST">
                                                             @csrf
                                                             <textarea name="reply" cols="30" rows="7"
                                                                       placeholder="Type. . ."></textarea>
@@ -400,7 +400,7 @@
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
                                                 <span class="text-primary">
-                                                    {{ __('By') }} {{ $post->auther->name }}
+                                                    {{ __('By') }} {{ $post->author->name }}
                                                 </span>
                                                     </li>
                                                     <li class="list-inline-item">
@@ -461,7 +461,7 @@
                                                             <ul class="list-inline">
                                                                 <li class="list-inline-item">
                                                             <span class="text-primary">
-                                                                {{ __('By') }} {{ $news->auther->name }}
+                                                                {{ __('By') }} {{ $news->author->name }}
                                                             </span>
                                                                 </li>
                                                                 <li class="list-inline-item">
@@ -497,7 +497,7 @@
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item">
                                                 <span class="text-primary">
-                                                    {{ __('By') }} {{ $news->auther->name }}
+                                                    {{ __('By') }} {{ $news->author->name }}
                                                 </span>
                                                     </li>
                                                     <li class="list-inline-item">

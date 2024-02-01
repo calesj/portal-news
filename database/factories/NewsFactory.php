@@ -24,9 +24,9 @@ class NewsFactory extends Factory
     public function definition(): array
     {
         return [
-            'language' => fake()->randomElement(['en', 'pt']), // Substitua 'en' e 'pt' pelos seus idiomas
-            'category_id' => fake()->numberBetween(1, 5), // Substitua 1 e 5 pelo seu range de categorias
-            'auther_id' => 1, // Substitua 1 e 10 pelo seu range de autores
+            'language' => 'pt', // Substitua 'en' e 'pt' pelos seus idiomas
+            'category_id' => fake()->numberBetween(1, 3), // Substitua 1 e 5 pelo seu range de categorias
+            'author_id' => 1, // Substitua 1 e 10 pelo seu range de autores
             'image' => fake()->imageUrl(),
             'title' => fake()->sentence,
             'slug' => fake()->slug,
@@ -46,7 +46,7 @@ class NewsFactory extends Factory
         return $this->afterCreating(function (News $news) {
             $item = Tag::firstOrCreate([
                 'name' => fake()->word(),
-                'language' => $news->language
+                'language' => 'pt'
             ]);
 
             $news->tags()->attach($item->id);

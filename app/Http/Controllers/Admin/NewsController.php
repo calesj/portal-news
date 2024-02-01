@@ -59,7 +59,7 @@ class NewsController extends Controller
         $news = new News();
         $news->language = $request->language;
         $news->category_id = $request->category;
-        $news->auther_id = Auth::guard('admin')->id();
+        $news->author_id = Auth::guard('admin')->id();
         $news->image = $imagePath;
         $news->title = $request->title;
         $news->slug = Str::slug($request->title);

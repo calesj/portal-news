@@ -31,7 +31,7 @@
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
                                                             <a href="javascript:;">
-                                                                {{ __('By') }} {{ $news->auther->name }}
+                                                                {{ __('By') }} {{ $news->author->name }}
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
@@ -69,7 +69,7 @@
                                                             <ul class="list-inline">
                                                                 <li class="list-inline-item">
                                                                 <span class="text-primary">
-                                                                    {{ __('By') }} {{ $news->auther->name }}
+                                                                    {{ __('By') }} {{ $news->author->name }}
                                                                 </span>
                                                                 </li>
                                                                 <li class="list-inline-item">
@@ -115,7 +115,7 @@
                                                             <ul class="list-inline">
                                                                 <li class="list-inline-item">
                                                                 <span class="text-primary">
-                                                                    {{ __('By') }} {{ $news->auther->name }}
+                                                                    {{ __('By') }} {{ $news->author->name }}
                                                                 </span>
                                                                 </li>
                                                                 <li class="list-inline-item">

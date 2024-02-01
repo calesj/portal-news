@@ -40,7 +40,7 @@
                             </select>
                         </div>
 
-                        <ul class="topbar-link">
+                        <ul class="topbar-link" style="display: inline-flex;">
                             <li><a href="login.html">Login</a></li>
                             <li><a href="register.html">Register</a></li>
                         </ul>

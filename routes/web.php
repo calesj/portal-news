@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\ProfileController;
@@ -37,7 +38,7 @@ Route::get('language', LanguageController::class)->name('language');
 Route::get('news-details/{slug}', [HomeController::class, 'showNews'])->name('news-details');
 
 /** News Comment Routes */
-Route::post('news-comment', [HomeController::class, 'handleComment'])->name('news-comment');
-Route::post('news-comment-replay', [HomeController::class, 'handleReplay'])->name('news-comment-replay');
+Route::post('news-comment', [CommentController::class, 'handleComment'])->name('news-comment');
+Route::post('news-comment-reply', [CommentController::class, 'handleReply'])->name('news-comment-reply');
 
-Route::delete('news-comment-destroy', [HomeController::class, 'commentDestroy'])->name('news-comment-destroy');
+Route::delete('news-comment-destroy', [CommentController::class, 'commentDestroy'])->name('news-comment-destroy');

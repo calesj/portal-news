@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('language');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->foreignId('auther_id')->constrained('admins');
+            $table->foreignId('author_id')->constrained('admins');
             $table->text('image');
             $table->string('title');
             $table->text('slug');
