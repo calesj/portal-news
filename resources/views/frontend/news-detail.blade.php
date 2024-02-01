@@ -230,8 +230,8 @@
                                                 <a href="#" class="comment-reply-link" data-toggle="modal"
                                                    data-target="#exampleModal-{{$comment->id}}">{{ __('Reply') }}</a>
                                                 <span class="delete-msg" data-id="{{ $comment->id }}">
-                                            <i class="fa fa-trash"></i>
-                                        </span>
+                                                    <i class="fa fa-trash"></i>
+                                                </span>
                                             </div>
                                         </aside>
 
@@ -266,8 +266,8 @@
                                                                        data-toggle="modal"
                                                                        data-target="#exampleModal-{{ $comment->id }}">{{ __('Reply') }}</a>
                                                                 @endif
-                                                                <span style="margin-left: auto">
-                                                                    <i class="fa fa-trash"></i>
+                                                                <span style="margin-left: auto"class="delete-msg" data-id="{{ $reply->id }}">
+                                                                        <i class="fa fa-trash"></i>
                                                                 </span>
                                                             </div>
                                                         </aside>
