@@ -37,6 +37,7 @@ class HomeController extends Controller
     }
 
     /**
+     * Mostra os detalhes de uma noticia, e informações sobre outras para a tela de detalhes de noticia
      * @param string $slug
      * @return View
      */
