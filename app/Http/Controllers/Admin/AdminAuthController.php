@@ -23,9 +23,9 @@ class AdminAuthController extends Controller
 {
     /**
      * Mostra a view de login
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     * @return View|RedirectResponse
      */
-    public function login()
+    public function login(): View | RedirectResponse
     {
         if (\auth('admin')->check()) {
             return redirect()->route('admin.dashboard');
