@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\News;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\News>
@@ -23,10 +23,14 @@ class NewsFactory extends Factory
      */
     public function definition(): array
     {
+        $language = fake()->randomElement(['en', 'pt']); // Escolha entre 'en' e 'pt'
+        $categoria = Category::where('language', $language)->inRandomOrder()->first();
+
+
         return [
-            'language' => 'pt', // Substitua 'en' e 'pt' pelos seus idiomas
-            'category_id' => fake()->numberBetween(1, 3), // Substitua 1 e 5 pelo seu range de categorias
-            'author_id' => 1, // Substitua 1 e 10 pelo seu range de autores
+            'language' => $language, // Substitua 'en' e 'pt' pelos seus idiomas
+            'category_id' => $categoria, // Substitua 1 e 5 pelo seu range de categorias
+            'author_id' => 1,
             'image' => fake()->imageUrl(),
             'title' => fake()->sentence,
             'slug' => fake()->slug,

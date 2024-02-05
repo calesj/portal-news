@@ -4,35 +4,41 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\HomeTrait;
+use App\Models\HomeSectionSetting;
 use App\Models\News;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     use HomeTrait;
+
     /**
      * @return View
      */
     public function index(): View
     {
+        // noticias que aparecerao no carrossel
         $breakingNews = News::where(['is_breaking_news' => 1])
             ->activeEntries()
             ->withLocalize()
             ->orderBy('id', 'DESC')
             ->take(10)->get();
 
+        // noticias que aparecerao no carrossel
         $heroSlider = News::with(['category', 'author'])
             ->where(['show_at_slider' => 1])->activeEntries()
             ->withLocalize()
             ->orderBy('id', 'DESC')
             ->take(7)->get();
 
+        // noticias recentes
         $recentNews = News::with(['category', 'author'])
             ->activeEntries()
             ->withLocalize()
             ->orderBy('id', 'DESC')
             ->take(6)->get();
 
+        // noticias popular
         $popularNews = News::with('category')
             ->where('show_at_popular', 1)
             ->activeEntries()
@@ -40,7 +46,59 @@ class HomeController extends Controller
             ->orderBy('updated_at', 'DESC')
             ->take(4)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews', 'popularNews'));
+        // Primeira categoria que mostra na pagina inicial
+        $homeSectionSetting = HomeSectionSetting::query()->where([
+            'language' => getLanguage()
+        ])->first();
+
+        // registros da primeira categoria
+        $categorySectionOne = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_one)
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('id', 'DESC')
+            ->take(8)
+            ->get();
+
+        $categorySectionTwo = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_two)
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('id', 'DESC')
+            ->take(5)
+            ->get();
+
+        $categorySectionThree = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_three)
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('id', 'DESC')
+            ->take(6)
+            ->get();
+
+        $categorySectionFour = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_four)
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('id', 'DESC')
+            ->take(4)
+            ->get();
+
+        //Mais vistos
+        $mostViewedNews =  News::query()->with(['category', 'author'])
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('views', 'DESC')
+            ->take(3)
+            ->get();
+
+        return view('frontend.home', compact(
+            'breakingNews',
+            'heroSlider',
+            'recentNews',
+            'popularNews',
+            'categorySectionOne',
+            'categorySectionTwo',
+            'categorySectionThree',
+            'categorySectionFour',
+            'mostViewedNews'
+        ));
     }
 
     /**

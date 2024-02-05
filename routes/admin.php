@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SocialCountController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login.get');
@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     Route::put('home-section-setting', [HomeSectionSettingController::class, 'update'])
         ->name('home-section-setting.update');
+
+    /** Social Count Routes */
+    Route::resource('social-count', SocialCountController::class);
 });
 
 

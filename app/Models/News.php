@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class News extends Model
 {
@@ -16,7 +17,7 @@ class News extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeActiveEntries($query)
+    public function scopeActiveEntries($query): mixed
     {
         return $query->where([
             'status' => 1,
@@ -29,7 +30,7 @@ class News extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeWithLocalize($query)
+    public function scopeWithLocalize($query): mixed
     {
         return $query->where([
             'language' => getLanguage(),
@@ -51,7 +52,7 @@ class News extends Model
         return $this->belongsTo(Admin::class);
     }
 
-    public function comments()
+    public function comments(): hasMany
     {
         return $this->hasMany(Comment::class);
     }

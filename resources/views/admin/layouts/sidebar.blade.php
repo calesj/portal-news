@@ -17,30 +17,41 @@
             </li>
             <li class="menu-header">Starter</li>
 
-            <li><a class="nav-link" href="{{ route('admin.category.index') }}">
-                    <i class="far fa-square"></i> <span>{{ __('Category') }}</span></a>
+            <li>
+                <a class="nav-link" href="{{ route('admin.category.index') }}">
+                    <i class="far fa-square"></i> <span>{{ __('Category') }}</span>
+                </a>
             </li>
 
                  <li class="dropdown">
                      <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>News</span></a>
                      <ul class="dropdown-menu">
                          <li><a class="nav-link" href="{{ route('admin.news.index') }}">All News</a></li>
-                         <li><a class="nav-link" href="{{ route('admin.news.create') }}">Editor</a></li>
+                         <li><a class="nav-link" href="{{ route('admin.news.create') }}">{{__('Editor')}}</a></li>
                          <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
                      </ul>
                  </li>
 
-            <li><a class="nav-link" href="{{ route('admin.language.index') }}">
+            <li>
+                <a class="nav-link" href="{{ route('admin.language.index') }}">
                     <i class="far fa-square"></i> <span>{{ __('Post') }}</span>
                 </a>
             </li>
 
-            <li><a class="nav-link" href="{{ route('admin.language.index') }}">
+            <li>
+                <a class="nav-link" href="{{ route('admin.social-count.index') }}">
+                    <i class="far fa-square"></i> <span>{{ __('Social count') }}</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="nav-link" href="{{ route('admin.language.index') }}">
                     <i class="far fa-square"></i> <span>{{ __('Languages') }}</span>
                 </a>
             </li>
 
-            <li><a class="nav-link" href="{{ route('admin.home-section-setting.index') }}">
+            <li>
+                <a class="nav-link" href="{{ route('admin.home-section-setting.index') }}">
                     <i class="far fa-square"></i> <span>{{ __('Home Section Setting') }}</span>
                 </a>
             </li>

@@ -52,13 +52,11 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <span class="text-dark text-capitalize ml-1">
-                                        {{ date('M d, Y - H:i', strtotime($news->created_at)) }}
+                                        {{ date('d M, Y', strtotime($news->created_at)) }}
                                     </span>
                                 </li>
                                 <li class="list-inline-item">
-                                    <span class="text-dark text-capitalize">
-                                        {{ __('In') }}
-                                    </span>
+                                    <span class="text-dark text-capitalize">{{ __('In') }}</span>
                                     <a href="#">
                                         {{ $news->category->name }}
                                     </a>
