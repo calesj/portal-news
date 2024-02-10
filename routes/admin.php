@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialCountController;
 use Illuminate\Support\Facades\Route;
 
+/** ADMIN ROUTES */
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login.get');
     Route::post('login', [AdminAuthController::class, 'handleLogin'])->name('login.post');

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\HomeTrait;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
+use App\Models\SocialCount;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -81,12 +83,17 @@ class HomeController extends Controller
             ->get();
 
         //Mais vistos
-        $mostViewedNews =  News::query()->with(['category', 'author'])
+        $mostViewedNews = News::query()->with(['category', 'author'])
             ->activeEntries()
             ->withLocalize()
             ->orderBy('views', 'DESC')
             ->take(3)
             ->get();
+
+        // Mostrando todas as tags
+        $mostCommonTags = $this->mostCommonTags();
+
+        $socialCounts = SocialCount::where(['status' => 1, 'language' => getLanguage()])->get();
 
         return view('frontend.home', compact(
             'breakingNews',
@@ -97,7 +104,9 @@ class HomeController extends Controller
             'categorySectionTwo',
             'categorySectionThree',
             'categorySectionFour',
-            'mostViewedNews'
+            'mostViewedNews',
+            'socialCounts',
+            'mostCommonTags'
         ));
     }
 
@@ -154,5 +163,21 @@ class HomeController extends Controller
             'frontend.news-detail',
             compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts')
         );
+    }
+
+    public function news(Request $request)
+    {
+        if ($request->has('search')) {
+            $news = News::where(function ($query) use ($request) {
+                $query->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('content', 'like', '%' . $request->search . '%');
+            })->orWhereHas('category', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            })->get();
+
+
+        }
+
+        return view('frontend.news', compact('news'));
     }
 }

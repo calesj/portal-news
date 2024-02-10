@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminCategoryCreateRequest;
 use App\Http\Requests\AdminCategoryUpdateRequest;
-use App\Http\Requests\AdminLanguageUpdateRequest;
 use App\Models\Category;
 use App\Models\Language;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AdminCategoryCreateRequest $request)
+    public function store(AdminCategoryCreateRequest $request): RedirectResponse
     {
         $category = new Category();
         $category->language = $request->language;
@@ -59,7 +60,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
         $languages = Language::all();
         $category = Category::findOrFail($id);
@@ -69,7 +70,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminCategoryUpdateRequest $request, string $id)
+    public function update(AdminCategoryUpdateRequest $request, string $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->language = $request->language;
@@ -86,7 +87,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): Response
     {
         try {
             $category = Category::findOrFail($id);
