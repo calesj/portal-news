@@ -368,11 +368,13 @@
                         </div>
                     </div>
 
-                    <div class="small_add_banner mb-5 pb-4">
-                        <div class="small_add_banner_img">
-                            <img src="images/placeholder_large.jpg" alt="adds">
+                    @if($ad->view_page_ad_status === 1)
+                        <div class="small_add_banner mb-5 pb-4">
+                            <div class="small_add_banner_img">
+                                <img src="{{ asset($ad->view_page_ad) }}" alt="adds">
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
 
                     <div class="clearfix"></div>
@@ -524,49 +526,24 @@
 
                         <!-- social media -->
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('stay conected') }}</h4>
+                            <h4 class="border_section">{{ __('Stay connected') }}</h4>
                             <!-- widget Social media -->
                             <div class="wrap__social__media">
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget facebook">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-facebook"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter">
-                                            19,243 fans
-                                        </span>
-                                        <span class="social__media__widget-name">
-                                            like
-                                        </span>
-                                    </div>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget twitter">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-twitter"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter">
-                                            2.076 followers
-                                        </span>
-                                        <span class="social__media__widget-name">
-                                            follow
-                                        </span>
-                                    </div>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <div class="social__media__widget youtube">
-                                        <span class="social__media__widget-icon">
-                                            <i class="fa fa-youtube"></i>
-                                        </span>
-                                        <span class="social__media__widget-counter">
-                                            15,200 followers
-                                        </span>
-                                        <span class="social__media__widget-name">
-                                            subscribe
-                                        </span>
-                                    </div>
-                                </a>
-
+                                @foreach($socialCounts as $socialCount)
+                                    <a href="{{ $socialCount->url }}" target="_blank">
+                                        <div class="social__media__widget mt-2" style="background-color: {{ $socialCount->color }}">
+                                            <span class="social__media__widget-icon">
+                                                <i class="{{ $socialCount->icon }}"></i>
+                                            </span>
+                                            <span class="social__media__widget-counter">
+                                                {{ $socialCount->fan_count }} {{ $socialCount->fan_type }}
+                                            </span>
+                                            <span class="social__media__widget-name">
+                                                {{ $socialCount->button_text }}
+                                            </span>
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
                         </aside>
                         <!-- End social media -->
@@ -603,14 +580,16 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">{{ __('Advertise') }}</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="images/news6.jpg" alt="" class="img-fluid">
-                                </figure>
-                            </a>
-                        </aside>
+                        @if($ad->news_page_ad_status)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="#">
+                                    <figure>
+                                        <img src="{{ asset($ad->news_page_ad) }}" alt="" class="img-fluid">
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
 
                     </div>
                 </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\HomeTrait;
+use App\Models\Ad;
+use App\Models\Category;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
 use App\Models\SocialCount;
@@ -95,6 +97,8 @@ class HomeController extends Controller
 
         $socialCounts = SocialCount::where(['status' => 1, 'language' => getLanguage()])->get();
 
+        $ad = Ad::first();
+
         return view('frontend.home', compact(
             'breakingNews',
             'heroSlider',
@@ -106,7 +110,8 @@ class HomeController extends Controller
             'categorySectionFour',
             'mostViewedNews',
             'socialCounts',
-            'mostCommonTags'
+            'mostCommonTags',
+            'ad'
         ));
     }
 
@@ -159,25 +164,57 @@ class HomeController extends Controller
             ->take(5)
             ->get();
 
+        $socialCounts = SocialCount::where(['status' => 1, 'language' => getLanguage()])->get();
+
+        $ad = Ad::first();
+
         return view(
             'frontend.news-detail',
-            compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts')
+            compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts', 'socialCounts', 'ad')
         );
     }
 
     public function news(Request $request)
     {
-        if ($request->has('search')) {
-            $news = News::where(function ($query) use ($request) {
+        $news = News::query();
+
+        $news->when($request->has('tag'), function ($query) use ($request) {
+            $query->whereHas('tags', function($query) use ($request) {
+                $query->where('name', $request->tag);
+            });
+        });
+
+        $news->when($request->has('category') && !empty($request->category), function ($query) use ($request) {
+            $query->whereHas('category', function ($query) use ($request) {
+                $query->where('slug', $request->category);
+            });
+        });
+
+        $news->when($request->has('search'), function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
                 $query->where('title', 'like', '%' . $request->search . '%')
                     ->orWhere('content', 'like', '%' . $request->search . '%');
             })->orWhereHas('category', function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->search . '%');
-            })->get();
+            });
+        });
 
+        $news = $news->activeEntries()->withLocalize()->paginate(8);
 
-        }
+        /** noticias criadas recentementes */
+        $recentNews = News::with(['category', 'author'])
+            ->activeEntries()
+            ->withLocalize()
+            ->orderBy('id', 'DESC')
+            ->take(4)->get();
 
-        return view('frontend.news', compact('news'));
+        /** tags mais comuns utilizadas */
+        $mostCommonTags = $this->mostCommonTags();
+
+        $categories = Category::where(['status' => 1, 'language' => getLanguage()])->get();
+
+        $ad = Ad::first();
+
+        return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags', 'categories', 'ad'));
     }
 }
