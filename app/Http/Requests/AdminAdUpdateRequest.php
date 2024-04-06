@@ -23,14 +23,15 @@ class AdminAdUpdateRequest extends FormRequest
     {
         return [
             'home_top_bar_ad' => ['nullable', 'image', 'max:3000'],
-
             'home_middle_ad' => ['nullable', 'image', 'max:3000'],
-
             'view_page_ad' => ['nullable', 'image', 'max:3000'],
-
             'news_page_ad' => ['nullable', 'image', 'max:3000'],
-
             'side_bar_ad' => ['nullable', 'image', 'max:3000'],
+            'home_top_bar_ad_url' => ['url', 'nullable'],
+            'home_middle_ad_url' => ['url', 'nullable'],
+            'view_page_ad_url' => ['url', 'nullable'],
+            'news_page_ad_url' => ['url', 'nullable'],
+            'side_bar_ad_url' => ['url', 'nullable'],
         ];
     }
 }

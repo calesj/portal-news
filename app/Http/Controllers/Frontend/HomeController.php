@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
 use App\Models\SocialCount;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -216,5 +217,21 @@ class HomeController extends Controller
         $ad = Ad::first();
 
         return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags', 'categories', 'ad'));
+    }
+
+    /** Subscriber Newsletter register */
+    public function subscriberNewsLetter(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'max:255', 'unique:subscribers,email'],
+        ], [
+            'email.unique' => __('Email is already subscribed!')
+        ]);
+
+        $subscriber = new Subscriber();
+        $subscriber->email = $request->email;
+        $subscriber->save();
+
+        return response(['status' => 'success', 'message' => __('Subscribed Success')]);
     }
 }

@@ -369,11 +369,13 @@
                     </div>
 
                     @if($ad->view_page_ad_status === 1)
-                        <div class="small_add_banner mb-5 pb-4">
-                            <div class="small_add_banner_img">
-                                <img src="{{ asset($ad->view_page_ad) }}" alt="adds">
+                        <a href="{{ $ad->view_page_ad_url }}">
+                            <div class="small_add_banner mb-5 pb-4">
+                                <div class="small_add_banner_img">
+                                    <img src="{{ asset($ad->view_page_ad) }}" alt="adds">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endif
 
 
@@ -568,22 +570,24 @@
                             <!-- Form Subscribe -->
                             <div class="widget__form-subscribe bg__card-shadow">
                                 <h6>
-                                    {{ __('The most important world news and events of the day')}}.
+                                    {{ __('The most important world news and events of the day.') }}
                                 </h6>
-                                <p><small>{{ __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
-                                <div class="input-group ">
-                                    <input type="text" class="form-control" placeholder="Your email address">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">{{ __('sign up') }}</button>
+                                <p><small>{{ __('Get magzrenvi daily newsletter on your inbox.') }}</small></p>
+                                <form action="" class="newsletter-form">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" name="email" placeholder="Your email address">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary newsletter-button" type="submit">{{ __('sign up') }}</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </aside>
 
                         @if($ad->news_page_ad_status)
                             <aside class="wrapper__list__article">
                                 <h4 class="border_section">{{ __('Advertise') }}</h4>
-                                <a href="#">
+                                <a href="{{ $ad->news_page_ad_url }}">
                                     <figure>
                                         <img src="{{ asset($ad->news_page_ad) }}" alt="" class="img-fluid">
                                     </figure>

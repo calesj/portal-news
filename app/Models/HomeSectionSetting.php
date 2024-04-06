@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class HomeSectionSetting extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'category_section_one',
         'category_section_two',

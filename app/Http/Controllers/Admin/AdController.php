@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAdUpdateRequest;
+use App\Http\Service\NewsApiService;
+use App\Http\Service\Traits\FileDownloadTrait;
+use App\Jobs\DownloadNewsJob;
 use App\Models\Ad;
+use App\Models\News;
+use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Str;
 
 class AdController extends Controller
 {
-    use FileUploadTrait;
+    use FileUploadTrait, FileDownloadTrait;
 
     /**
      * Display a listing of the resource.
@@ -78,6 +85,11 @@ class AdController extends Controller
             'view_page_ad_status' => $request->view_page_ad_status == 1 ? 1 : 0,
             'news_page_ad_status' => $request->news_page_ad_status == 1 ? 1 : 0,
             'side_bar_ad_status' => $request->side_bar_ad_status == 1 ? 1 : 0,
+            'home_top_bar_ad_url' => $request->home_top_bar_ad_url,
+            'home_middle_ad_url' => $request->home_middle_ad_url,
+            'view_page_ad_url' => $request->view_page_ad_url,
+            'news_page_ad_url' => $request->news_page_ad_url,
+            'side_bar_ad_url' => $request->side_bar_ad_url,
         ]);
 
         toast(__('Updated Succesfully'), 'success');

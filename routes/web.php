@@ -45,3 +45,6 @@ Route::post('news-comment', [CommentController::class, 'handleComment'])->name('
 Route::post('news-comment-reply', [CommentController::class, 'handleReply'])->name('news-comment-reply');
 
 Route::delete('news-comment-destroy', [CommentController::class, 'commentDestroy'])->name('news-comment-destroy');
+
+/** Newsletter Routes */
+Route::post('subscribe-newsletter', [HomeController::class, 'subscriberNewsLetter'])->name('subscribe-newsletter');

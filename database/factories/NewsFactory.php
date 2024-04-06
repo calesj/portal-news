@@ -23,13 +23,9 @@ class NewsFactory extends Factory
      */
     public function definition(): array
     {
-        $language = fake()->randomElement(['en', 'pt']); // Escolha entre 'en' e 'pt'
-        $categoria = Category::where('language', $language)->inRandomOrder()->first();
-
-
         return [
-            'language' => $language, // Substitua 'en' e 'pt' pelos seus idiomas
-            'category_id' => $categoria, // Substitua 1 e 5 pelo seu range de categorias
+            'language' => 'pt', // Substitua 'en' e 'pt' pelos seus idiomas
+            'category_id' => 1, // Substitua 1 e 5 pelo seu range de categorias
             'author_id' => 1,
             'image' => fake()->imageUrl(),
             'title' => fake()->sentence,

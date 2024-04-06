@@ -39,6 +39,18 @@
 
 <script>
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
     // Add csrf token in ajax request
     $.ajaxSetup({
         headers: {
@@ -62,6 +74,44 @@
                 },
                 error: function (data) {
                     console.error(data)
+                }
+            })
+        })
+        /** Subscribe Newsletter**/
+        $('.newsletter-form').on('submit', function (e) {
+            e.preventDefault()
+            $.ajax({
+                method: 'POST',
+                url: "{{ route('subscribe-newsletter') }}",
+                data: $(this).serialize(),
+                beforeSend: function () {
+                    $('.newsletter-button').text('loading ...')
+                    $('.newsletter-button').attr('disabled', true)
+                },
+
+                success: function (data) {
+                    if (data.status === 'success') {
+                        Toast.fire({
+                            icon: 'success',
+                            title: data.message
+                        })
+                        $('.newsletter-form')[0].reset();
+                        $('.newsletter-button').text('sign up')
+                        $('.newsletter-button').attr('disabled', false)
+                    }
+                },
+                error: function (data) {
+                    if (data.status === 422) {
+                        let errors = data.responseJSON.errors
+                        $.each(errors, function (index, value) {
+                            Toast.fire({
+                                icon: 'error',
+                                title: value[0]
+                            })
+                        })
+                        $('.newsletter-button').text('sign up')
+                        $('.newsletter-button').attr('disabled', false)
+                    }
                 }
             })
         })

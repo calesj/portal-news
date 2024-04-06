@@ -61,6 +61,12 @@
                     <i class="far fa-square"></i> <span>{{ __('Advertisement') }}</span>
                 </a>
             </li>
+
+            <li>
+                <a class="nav-link" href="{{ route('admin.subscribers.index') }}">
+                    <i class="far fa-square"></i> <span>{{ __('Subscribers') }}</span>
+                </a>
+            </li>
             {{--
              <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
 
