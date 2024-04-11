@@ -102,6 +102,6 @@ class AdController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 class NewsDownloadApiCommand extends Command
 {
     private NewsApiService $newsApiService;
+
     public function __construct(
         NewsApiService $newsApiService
     )
@@ -16,6 +17,7 @@ class NewsDownloadApiCommand extends Command
         $this->newsApiService = $newsApiService;
         parent::__construct();
     }
+
     /**
      * The name and signature of the console command.
      *
