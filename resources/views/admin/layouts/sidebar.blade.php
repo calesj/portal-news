@@ -16,7 +16,6 @@
                 <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Starter</li>
-
             <li>
                 <a class="nav-link" href="{{ route('admin.category.index') }}">
                     <i class="far fa-square"></i> <span>{{ __('Category') }}</span>
@@ -67,6 +66,28 @@
                     <i class="far fa-square"></i> <span>{{ __('Subscribers') }}</span>
                 </a>
             </li>
+
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>{{ __('Footer Settings') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.social-link.index') }}">{{ __('Social Links') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.news.create') }}">{{__('Editor')}}</a></li>
+                    <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="nav-link" href="{{ route('admin.role.index') }}">
+                    <i class="far fa-square"></i> <span>{{ __('Roles and Permissions') }}</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="nav-link" href="{{ route('admin.role.index') }}">
+                    <i class="far fa-square"></i> <span>{{ __('Roles and Permissions') }}</span>
+                </a>
+            </li>
+
             {{--
              <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
 

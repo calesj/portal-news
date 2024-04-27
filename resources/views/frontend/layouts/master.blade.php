@@ -14,12 +14,17 @@
     <meta name="twitter:image" content="@yield('meta_tw_image')"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <link href="{{ asset('frontend/assets/css/styles.css') }}" rel="stylesheet"/>
 </head>
 
 <body>
+@php
+    use App\Models\Language;
 
+    $languages = Language::where('status', 1)->get();
+    $socialLinks = \App\Models\SocialLink::where('status', 1)->get()
+@endphp
 <!-- Header news -->
 @include('frontend.layouts.header')
 <!-- End Header news -->

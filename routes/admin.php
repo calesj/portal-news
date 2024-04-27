@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SocialCountController;
+use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,8 +72,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     /** Ad Routes */
     Route::resource('ad', AdController::class);
 
-    /** Subscriber Newsteller Route */
+    /** Subscriber Newsteller Routes */
     Route::resource('subscribers', SubscriberController::class);
+
+    /** Social Links Routes */
+    Route::resource('social-link', SocialLinkController::class);
+
+    /** Role and Permissions */
+    Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');
+    Route::get('role/create', [RolePermissionController::class, 'create'])->name('role.create');
+    Route::post('role/create', [RolePermissionController::class, 'store'])->name('role.store');
+    Route::get('role/{id}/edit', [RolePermissionController::class, 'edit'])->name('role.edit');
+    Route::put('role/{id}/edit', [RolePermissionController::class, 'update'])->name('role.update');
+    Route::delete('role/{id}/destroy', [RolePermissionController::class, 'destroy'])->name('role.destroy');
 });
 
 
