@@ -43,5 +43,15 @@ class CategorySeeder extends Seeder
             'show_at_nav' => 1,
             'status' => 1,
         ]);
+
+        $category = new Category();
+        $category->updateOrCreate(
+            ['id' => 1], [
+            'language' => 'en',
+            'name' => 'Global',
+            'slug' => Str::slug('Global'),
+            'show_at_nav' => 1,
+            'status' => 1,
+        ]);
     }
 }

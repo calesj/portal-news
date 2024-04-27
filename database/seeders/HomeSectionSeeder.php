@@ -23,5 +23,16 @@ class HomeSectionSeeder extends Seeder
                 'category_section_four' => 1,
             ]
         );
+
+        $homeSection->updateOrCreate(
+            ['language' => 'en'], //pt
+            [
+                'language' => 'en',
+                'category_section_one' => 1,
+                'category_section_two' => 1,
+                'category_section_three' => 1,
+                'category_section_four' => 1,
+            ]
+        );
     }
 }

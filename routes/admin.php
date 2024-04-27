@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\NewsController;
@@ -77,6 +78,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     /** Social Links Routes */
     Route::resource('social-link', SocialLinkController::class);
+
+    /** Footer Info Routes */
+    Route::resource('footer-info', FooterInfoController::class);
 
     /** Role and Permissions */
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');

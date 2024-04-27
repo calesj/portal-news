@@ -19,11 +19,11 @@
 </head>
 
 <body>
-@php
-    use App\Models\Language;
 
-    $languages = Language::where('status', 1)->get();
-    $socialLinks = \App\Models\SocialLink::where('status', 1)->get()
+<!-- Global Variables -->
+@php
+    $socialLinks = \App\Models\SocialLink::where('status', 1)->get();
+    $footerInfo = \App\Models\FooterInfo::where('language', getLanguage())->first();
 @endphp
 <!-- Header news -->
 @include('frontend.layouts.header')

@@ -1,3 +1,8 @@
+@php
+    use App\Models\Language;
+    $languages = Language::where('status', 1)->get();
+@endphp
+
 <header class="bg-light">
     <!-- Navbar  Top-->
     <div class="topbar d-none d-sm-block">

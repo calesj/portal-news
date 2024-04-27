@@ -71,6 +71,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>{{ __('Footer Settings') }}</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.social-link.index') }}">{{ __('Social Links') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-info.index') }}">{{ __('Footer Info') }}</a></li>
                     <li><a class="nav-link" href="{{ route('admin.news.create') }}">{{__('Editor')}}</a></li>
                     <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
                 </ul>
