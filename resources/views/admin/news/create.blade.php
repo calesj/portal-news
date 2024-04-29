@@ -29,7 +29,6 @@
                         <label for="status">{{ __('Category')}}</label>
                         <select name="category" id="category" class="form-control">
                             <option value="">---Select---</option>
-                            <option value=""></option>
                         </select>
                         @error('category')
                         <p class="text-danger">{{ $message }}</p>

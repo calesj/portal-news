@@ -27,8 +27,6 @@ function getLanguage()
         return session('language');
     }
 
-    setLanguage('pt');
-
     return session('language');
 }
 

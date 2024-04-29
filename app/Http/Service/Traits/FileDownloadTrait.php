@@ -2,13 +2,12 @@
 
 namespace App\Http\Service\Traits;
 
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 
 trait FileDownloadTrait
 {
-    public function downloadImage(string $imageUrl, string $dir = 'uploads')
+    public function downloadImage(string $imageUrl, string $dir = 'uploads'): ?string
     {
         // Obtém o conteúdo da imagem do link fornecido
         $imageData = file_get_contents($imageUrl);
