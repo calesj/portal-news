@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FooterGridOneSaveRequest;
-use App\Models\FooterGridOne;
+use App\Http\Requests\FooterGridTwoSaveRequest;
+use App\Models\FooterGridTwo;
 use App\Models\FooterTitle;
 use App\Models\Language;
 use Illuminate\Http\Request;
 
-class FooterGridOneController extends Controller
+class FooterGridTwoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class FooterGridOneController extends Controller
     public function index()
     {
         $languages = Language::all();
-        return view('admin.footer-grid-one.index', compact('languages'));
+        return view('admin.footer-grid-two.index', compact('languages'));
     }
 
     /**
@@ -26,16 +26,16 @@ class FooterGridOneController extends Controller
     public function create()
     {
         $languages = Language::all();
-        return view('admin.footer-grid-one.create', compact('languages'));
+        return view('admin.footer-grid-two.create', compact('languages'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FooterGridOneSaveRequest $request)
+    public function store(FooterGridTwoSaveRequest $request)
     {
-        $footer = new FooterGridOne();
+        $footer = new FooterGridTwo();
         $footer->language = $request->language;
         $footer->name = $request->name;
         $footer->url = $request->url;
@@ -44,7 +44,7 @@ class FooterGridOneController extends Controller
 
         toast(__('Created Successfully'), 'success');
 
-        return redirect()->route('admin.footer-grid-one.index');
+        return redirect()->route('admin.footer-grid-two.index');
     }
 
     /**
@@ -60,17 +60,17 @@ class FooterGridOneController extends Controller
      */
     public function edit(string $id)
     {
-        $footer = FooterGridOne::findOrFail($id);
+        $footer = FooterGridTwo::findOrFail($id);
         $languages = Language::all();
-        return view('admin.footer-grid-one.edit', compact('footer','languages'));
+        return view('admin.footer-grid-two.edit', compact('footer','languages'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(FooterGridOneSaveRequest $request, string $id)
+    public function update(FooterGridTwoSaveRequest $request, string $id)
     {
-        $footer = FooterGridOne::findOrFail($id);
+        $footer = FooterGridTwo::findOrFail($id);
         $footer->language = $request->language;
         $footer->name = $request->name;
         $footer->url = $request->url;
@@ -79,7 +79,7 @@ class FooterGridOneController extends Controller
 
         toast(__('Updated Successfully'), 'success');
 
-        return redirect()->route('admin.footer-grid-one.index');
+        return redirect()->route('admin.footer-grid-two.index');
     }
 
     /**
@@ -87,7 +87,7 @@ class FooterGridOneController extends Controller
      */
     public function destroy(string $id)
     {
-        FooterGridOne::findOrFail($id)->delete();
+        FooterGridTwo::findOrFail($id)->delete();
 
         return response(['status' => 'success', 'message' => __('Deleted Successfully')]);
     }
@@ -103,7 +103,7 @@ class FooterGridOneController extends Controller
 
         FooterTitle::updateOrCreate(
             [
-                'key' => 'grid_one_title',
+                'key' => 'grid_two_title',
                 'language' => $request->language,
             ],
             ['value' => $request->title]
@@ -111,6 +111,6 @@ class FooterGridOneController extends Controller
 
         toast(__('Updated Successfully'), 'success');
 
-        return redirect()->route('admin.footer-grid-one.index');
+        return redirect()->route('admin.footer-grid-two.index');
     }
 }

@@ -9,7 +9,7 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All footer grid one links') }}</h4>
+                <h4> {{ __('All footer grid two links') }}</h4>
             </div>
 
             <div class="card-body">
@@ -25,13 +25,13 @@
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach($languages as $language)
                         @php
-                            $footerTitle = \App\Models\FooterTitle::where(['language' => $language->lang, 'key' => 'grid_one_title'])
+                            $footerTitle = \App\Models\FooterTitle::where(['language' => $language->lang, 'key' => 'grid_two_title'])
                             ->first()
                         @endphp
                         <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}"
                              id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
                             <div class="card-body">
-                                <form action="{{ route('admin.footer-grid-one.title') }}" method="POST">
+                                <form action="{{ route('admin.footer-grid-two.title') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label for="">{{ __('Footer Title') }}</label>
@@ -50,9 +50,9 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All footer grid one links') }}</h4>
+                <h4> {{ __('All footer grid two links') }}</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.footer-grid-one.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.footer-grid-two.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"> {{ __('Create New') }} </i>
                     </a>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach($languages as $language)
                         @php
-                            $footerGridOne = \App\Models\FooterGridOne::where('language', $language->lang)
+                            $footerGridTwo = \App\Models\FooterGridTwo::where('language', $language->lang)
                             ->orderByDesc('id')->get()
                         @endphp
                         <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}"
@@ -92,7 +92,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($footerGridOne as $footer)
+                                        @foreach($footerGridTwo as $footer)
                                             <tr>
                                                 <td> {{ $footer->id }}</td>
                                                 <td> {{ $footer->name }}</td>
@@ -112,10 +112,10 @@
                                                 </td>
 
                                                 <td>
-                                                    <a href="{{ route('admin.footer-grid-one.edit', $footer->id) }}" class="btn btn-primary">
+                                                    <a href="{{ route('admin.footer-grid-two.edit', $footer->id) }}" class="btn btn-primary">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.footer-grid-one.destroy', $footer->id) }}"
+                                                    <a href="{{ route('admin.footer-grid-two.destroy', $footer->id) }}"
                                                        class="btn btn-danger delete-item">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>

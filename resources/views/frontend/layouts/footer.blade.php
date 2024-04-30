@@ -32,7 +32,7 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        entertainment
+                                        {{ $footerGridOneTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
@@ -44,7 +44,6 @@
                                             <a href="{{ $footer->url }}">{{ $footer->name }}</a>
                                         </li>
                                     @endforeach
-
                                 </ul>
                             </div>
                         </div>
@@ -52,28 +51,17 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        health
+                                        {{ $footerGridTwoTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
                                 </div>
                                 <ul class="list-unstyled option-content is-hidden">
-                                    <li>
-                                        <a href="#">medical research</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">healthy living</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">mental health</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">virus corona</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">children's health</a>
-                                    </li>
-
+                                    @foreach($footerGridTwo as $footer)
+                                        <li>
+                                            <a href="{{ $footer->url }}">{{ $footer->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -81,28 +69,18 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        business
+                                        {{ $footerGridThreeTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
                                 </div>
 
                                 <ul class="list-unstyled option-content is-hidden">
-                                    <li>
-                                        <a href="#">merkets</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">technology</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">features</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">property</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">business leaders</a>
-                                    </li>
+                                    @foreach($footerGridThree as $footer)
+                                        <li>
+                                            <a href="{{ $footer->url }}">{{ $footer->name }}</a>
+                                        </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
@@ -118,10 +96,9 @@
                         <div class="col-md-12">
                             <div class="border-top-1 bg__footer-bottom-section">
                                 <p class="text-white text-center">
-                                    {{ $footerInfo->copyright }}</p>
-
+                                    {{ $footerInfo->copyright }}
+                                </p>
                             </div>
-
                         </div>
                     </div>
                 </div>

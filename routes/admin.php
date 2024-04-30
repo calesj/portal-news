@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FooterGridOneController;
+use App\Http\Controllers\Admin\FooterGridThreeController;
+use App\Http\Controllers\Admin\FooterGridTwoController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -83,8 +85,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     /** Footer Info Routes */
     Route::resource('footer-info', FooterInfoController::class);
 
-    /** Footer Grid One*/
+    /** Footer Grid One Routes */
+    Route::post('footer-grid-one-title', [FooterGridOneController::class, 'handleTitle'])->name('footer-grid-one.title');
     Route::resource('footer-grid-one', FooterGridOneController::class);
+
+    /** Footer Grid Two Routes */
+    Route::post('footer-grid-two-title', [FooterGridTwoController::class, 'handleTitle'])->name('footer-grid-two.title');
+    Route::resource('footer-grid-two', FooterGridTwoController::class);
+
+    /** Footer Grid Three Routes */
+    Route::post('footer-grid-three-title', [FooterGridThreeController::class, 'handleTitle'])->name('footer-grid-three.title');
+    Route::resource('footer-grid-three', FooterGridThreeController::class);
 
     /** Role and Permissions */
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');

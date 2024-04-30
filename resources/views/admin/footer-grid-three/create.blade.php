@@ -3,14 +3,14 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Footer Grid One')}} </h1>
+            <h1> {{__('Footer Grid Three')}} </h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Create link for footer grind one') }}</h4>
+                <h4>{{ __('Create link for footer grind three') }}</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.footer-grid-one.store')}}" method="POST">
+                <form action="{{ route('admin.footer-grid-three.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="">{{ __('Language')}}</label>
