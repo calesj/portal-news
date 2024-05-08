@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FooterGridOneController;
 use App\Http\Controllers\Admin\FooterGridThreeController;
@@ -96,6 +99,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     /** Footer Grid Three Routes */
     Route::post('footer-grid-three-title', [FooterGridThreeController::class, 'handleTitle'])->name('footer-grid-three.title');
     Route::resource('footer-grid-three', FooterGridThreeController::class);
+
+    /** About page Routes */
+    Route::get('about', [AboutController::class, 'index'])->name('about.index');
+    Route::put('about', [AboutController::class, 'update'])->name('about.update');
+
+    /** Contact page Routes */
+    Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::put('contact', [ContactController::class, 'update'])->name('contact.update');
+
+    /** Contact message Routes */
+    Route::get('contact-message', [ContactMessageController::class, 'index'])->name('contact-message.index');
 
     /** Role and Permissions */
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');

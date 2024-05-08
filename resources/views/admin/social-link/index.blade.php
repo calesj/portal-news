@@ -2,11 +2,10 @@
 
 @section('content')
     <section class="section">
-        <div class="card-header">
+        <div class="section-header">
             <h4> {{ __('Social Links') }}</h4>
         </div>
-    </section>
-    <section class="section">
+
         <div class="card card-primary">
             <div class="card-header">
                 <h4> {{ __('All Links') }}</h4>

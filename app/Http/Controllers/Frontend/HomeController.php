@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Traits\HomeTrait;
+use App\Mail\ContactMail;
+use App\Models\About;
 use App\Models\Ad;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
+use App\Models\RecivedMail;
 use App\Models\SocialCount;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -180,7 +185,7 @@ class HomeController extends Controller
         $news = News::query();
 
         $news->when($request->has('tag'), function ($query) use ($request) {
-            $query->whereHas('tags', function($query) use ($request) {
+            $query->whereHas('tags', function ($query) use ($request) {
                 $query->where('name', $request->tag);
             });
         });
@@ -233,5 +238,45 @@ class HomeController extends Controller
         $subscriber->save();
 
         return response(['status' => 'success', 'message' => __('Subscribed Success')]);
+    }
+
+    public function about()
+    {
+        $about = About::where('language', getLanguage())->first();
+        return view('frontend.about', compact('about'));
+    }
+
+    public function contact()
+    {
+        $contact = Contact::where('language', getLanguage())->first();
+        return view('frontend.contact', compact('contact'));
+    }
+
+    public function handleContactForm(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+            'subject' => ['required', 'max:255'],
+            'message' => ['required', 'max:500'],
+        ]);
+
+        try {
+            $toMail = Contact::where('language', getLanguage())->first();
+
+            Mail::to($toMail->email)->send(new ContactMail($request->subject, $request->message, $request->email));
+
+            /** store the mail */
+            $mail = new RecivedMail();
+            $mail->email = $request->email;
+            $mail->subject = $request->subject;
+            $mail->message = $request->message;
+            $mail->save();
+
+            toast(__('Message sent succesfully!'), 'success');
+        } catch (\Exception $e) {
+            toast(__($e->getMessage()), 'error');
+        }
+
+        return redirect()->back();
     }
 }
