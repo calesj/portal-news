@@ -54,5 +54,17 @@ function convertToKFormat(int $number): string
         return round($number / 1000, 1) . 'K'; // 2500 => 2.5K
     }
 
-    return round($number / 1000000, 1)  . 'M'; // 2500000 => 2.5M
+    return round($number / 1000000, 1) . 'M'; // 2500000 => 2.5M
+}
+
+/** Make Sidebar Active */
+function setSidebarActive(array $routes): ?string
+{
+    foreach ($routes as $route) {
+        if (request()->routeIs($route)) {
+            return 'active';
+        }
+    }
+
+    return '';
 }
