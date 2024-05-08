@@ -90,7 +90,8 @@
 
             <li class="{{ setSidebarActive(['admin.subscribers.*']) }}">
                 <a class="nav-link" href="{{ route('admin.subscribers.index') }}">
-                    <i class="far fa-square"></i> <span>{{ __('Subscribers') }}</span>
+                    <i class="far fa-square"></i>
+                    <span>{{ __('Subscribers') }}</span>
                 </a>
             </li>
 
@@ -114,17 +115,30 @@
                 </ul>
             </li>
 
-            <li>
-                <a class="nav-link" href="{{ route('admin.role.index') }}">
-                    <i class="far fa-square"></i> <span>{{ __('Roles and Permissions') }}</span>
+            <li class="{{ setSidebarActive(['admin.settings.*']) }}">
+                <a class="nav-link" href="{{ route('admin.settings.index') }}">
+                    <i class="far fa-square"></i>
+                    <span>{{ __('Settings') }}</span>
                 </a>
             </li>
 
-            <li>
-                <a class="nav-link" href="{{ route('admin.role.index') }}">
-                    <i class="far fa-square"></i> <span>{{ __('Roles and Permissions') }}</span>
-                </a>
+            <li class="dropdown {{
+                setSidebarActive([
+                    'admin.role.*',
+                ])
+             }}">
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>
+                    <span>{{ __('Access Management') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.role.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.role.index') }}">
+                            <span>{{ __('Roles and Permissions') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
+
+
 
             {{--
              <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
