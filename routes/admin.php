@@ -110,6 +110,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     /** Contact message Routes */
     Route::get('contact-message', [ContactMessageController::class, 'index'])->name('contact-message.index');
+    Route::post('contact-send-reply', [ContactMessageController::class, 'sendReply'])->name('contact-message.send-reply');
 
     /** Role and Permissions */
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');

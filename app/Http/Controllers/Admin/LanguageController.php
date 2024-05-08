@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLanguageStoreRequest;
 use App\Http\Requests\AdminLanguageUpdateRequest;
 use App\Models\Language;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {

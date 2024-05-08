@@ -56,6 +56,9 @@
             <li>
                 <a class="nav-link" href="{{ route('admin.contact-message.index') }}">
                     <i class="far fa-square"></i> <span>{{ __('Contact Messages') }}</span>
+                    @if($unreadMessages > 0)
+                        <i class="badge bg-danger" style="color:#fff">{{ $unreadMessages }}</i>
+                    @endif
                 </a>
             </li>
 

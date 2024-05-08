@@ -4,17 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAdUpdateRequest;
-use App\Http\Service\NewsApiService;
 use App\Http\Service\Traits\FileDownloadTrait;
-use App\Jobs\DownloadNewsJob;
 use App\Models\Ad;
-use App\Models\News;
-use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Str;
+
 
 class AdController extends Controller
 {

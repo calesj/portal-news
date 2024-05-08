@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminSocialLinkStoreRequest;
 use App\Models\SocialLink;
-use Illuminate\Http\Request;
 
 class SocialLinkController extends Controller
 {

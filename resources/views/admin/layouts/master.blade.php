@@ -42,8 +42,11 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA --></head>
-
+    <!-- /END GA -->
+</head>
+@php
+    $unreadMessages = \App\Models\RecivedMail::where('seen', 0)->count();
+@endphp
 <body>
 <div id="app">
     <div class="main-wrapper main-wrapper-1">

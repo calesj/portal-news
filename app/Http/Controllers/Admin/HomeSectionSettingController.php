@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminHomeSectionSettingUpdateRequest;
 use App\Models\HomeSectionSetting;
 use App\Models\Language;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomeSectionSettingController extends Controller

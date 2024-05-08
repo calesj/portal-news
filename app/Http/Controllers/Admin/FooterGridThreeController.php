@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FooterGridTwoSaveRequest;
 use App\Models\FooterGridThree;
-
 use App\Models\FooterTitle;
 use App\Models\Language;
 use Illuminate\Http\Request;

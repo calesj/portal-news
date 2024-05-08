@@ -10,7 +10,6 @@ use App\Traits\FileUploadTrait;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-Use Alert;
 
 class ProfileController extends Controller
 {
