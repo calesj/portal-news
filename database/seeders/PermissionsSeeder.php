@@ -42,8 +42,8 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'home section settings update', 'group_name' => 'Home Section Setting Permissions', 'guard_name' => 'admin']);
 
         /** Advertisement Permissions */
-        Permission::create(['name' => 'advertisements index', 'group_name' => 'Advertisement Permissions', 'guard_name' => 'admin']);
-        Permission::create(['name' => 'advertisements update', 'group_name' => 'Advertisement Permissions', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'advertisement index', 'group_name' => 'Advertisement Permissions', 'guard_name' => 'admin']);
+        Permission::create(['name' => 'advertisement update', 'group_name' => 'Advertisement Permissions', 'guard_name' => 'admin']);
 
         /** Language Permissions */
         Permission::create(['name' => 'languages index', 'group_name' => 'Languages Permissions', 'guard_name' => 'admin']);

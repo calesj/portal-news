@@ -43,8 +43,12 @@
                                             {{ $permission->name }}
                                         </span>
                                     @endforeach
+                                    @if($role->name === 'super admin')
+                                            <span class="badge bg-danger text-light">{{ __('All Permissions') }}</span>
+                                    @endif
                                 </td>
                                 <td>
+                                    @if($role->name != 'super admin')
                                     <a href="{{ route('admin.role.edit', $role->id) }}"
                                        class="btn btn-primary">
                                         <i class="fas fa-edit"></i>
@@ -53,6 +57,7 @@
                                        class="btn btn-danger delete-item">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

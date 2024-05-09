@@ -15,6 +15,12 @@ class AdController extends Controller
 {
     use FileUploadTrait, FileDownloadTrait;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:advertisement index,admin'])->only(['index']);
+        $this->middleware(['permission:advertisement update,admin'])->only(['update']);
+    }
+
     /**
      * Display a listing of the resource.
      */

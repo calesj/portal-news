@@ -77,3 +77,16 @@ function getSetting($key)
 
     return $data->value;
 }
+
+/** check permission */
+function canAccess(mixed $permissions): bool
+{
+    $permission = auth()->guard('admin')->user()->hasAnyPermission($permissions);
+    $superAdmin = auth()->guard('admin')->user()->hasRole('super admin');
+
+    if ($permission || $superAdmin) {
+        return true;
+    }
+
+    return false;
+}
