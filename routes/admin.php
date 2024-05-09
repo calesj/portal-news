@@ -97,7 +97,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     /** Footer Grid Two Routes */
     Route::post('footer-grid-two-title', [FooterGridTwoController::class, 'handleTitle'])->name('footer-grid-two.title');
-    Route::resource('footer-grid-two', FooterGridTwoController::class);
+    Route::resource('footer-grid-two', FooterGridTwoController::class)->except('show');
 
     /** Footer Grid Three Routes */
     Route::post('footer-grid-three-title', [FooterGridThreeController::class, 'handleTitle'])->name('footer-grid-three.title');

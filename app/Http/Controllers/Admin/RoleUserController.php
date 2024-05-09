@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRoleUserStoreRequest;
+use App\Http\Requests\AdminRoleUserUpdateRequest;
 use App\Mail\RoleUserCreateMail;
 use App\Models\Admin;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Mail;
 use Spatie\Permission\Models\Role;
@@ -65,23 +65,45 @@ class RoleUserController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        //
+        $user = Admin::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.role-user.edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AdminRoleUserUpdateRequest $request, string $id)
     {
-        //
+        if ($request->has('password') && !empty($request->password)) {
+            $request->validate([
+                'password' => ['required', 'min:6', 'confirmed'],
+            ]);
+        }
+
+        $user = Admin::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->has('password') && !empty($request->password)) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        /** Vinculado cargo ao usuario */
+        $user->syncRoles($request->role);
+
+        toast(__('Updated successfully'), 'success');
+
+        return redirect()->route('admin.role-users.index');
     }
 
     /**
@@ -89,6 +111,12 @@ class RoleUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+
+        if ($admin->getRoleNames()->first() === 'super admin') {
+            return response()->json(['status' => 'error', 'message' => __('Can\'t delete the super admin')]);
+        }
+
+        return response()->json(['status' => 'success', 'message' => __('Deleted successfully')]);
     }
 }
