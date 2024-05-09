@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Language;
+use App\Models\Setting;
 use Illuminate\Support\Str;
 
 
@@ -67,4 +68,12 @@ function setSidebarActive(array $routes): ?string
     }
 
     return '';
+}
+
+/** get Seting */
+function getSetting($key)
+{
+    $data = Setting::query()->where('key', $key)->first();
+
+    return $data->value;
 }

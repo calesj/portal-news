@@ -11,7 +11,7 @@
             <div class="card-header">
                 <h4> {{ __('All Role Users') }}</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.role.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.role-users.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"> {{ __('Create New') }} </i>
                     </a>
                 </div>
@@ -25,37 +25,34 @@
                             <th class="text-center">
                                 #
                             </th>
-                            <th>{{ __('Role Name') }}</th>
-                            <th>{{ __('Permissions') }}</th>
-                            <th>{{ __('Action') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('Role') }}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($roles as $role)
+                        @foreach($admins as $admin)
                             <tr>
+                                <td>{{ $admin->id }}</td>
+                                <td>{{ $admin->name }}</td>
 
-                                <td>{{ $role->id }}</td>
-                                <td>{{ $role->name }}</td>
+                                <td>{{ $admin->email }}</td>
+
+                                <td><span class="badge badge-primary">{{ $admin->getRoleNames()->first() }}</span></td>
 
                                 <td>
-                                    @foreach($role->permissions as $permission)
-                                        <span class="badge bg-primary text-light">
-                                            {{ $permission->name }}
-                                        </span>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.role.edit', $role->id) }}"
+                                    <a href="{{ route('admin.role-users.edit', $admin->id) }}"
                                        class="btn btn-primary">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.role.destroy', $role->id) }}"
+                                    <a href="{{ route('admin.role-users.destroy', $admin->id) }}"
                                        class="btn btn-danger delete-item">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
-                            </tr>
                         @endforeach
+
+
                         </tbody>
                     </table>
                 </div>
