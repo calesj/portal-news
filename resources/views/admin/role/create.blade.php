@@ -35,13 +35,14 @@
                                                 <input type="checkbox" name="permissions[]"
                                                        class="custom-switch-input" value="{{ $item->name }}">
                                                 <span class="custom-switch-indicator"></span>
-                                                <span class="custom-switch-description text-primary">{{ $item->name }}</span>
+                                                <span
+                                                    class="custom-switch-description text-primary">{{ $item->name }}</span>
                                             </label>
                                         </div>
                                     @endforeach
                                 </div>
                                 <hr>
-                    @endforeach
+                                @endforeach
 
                             </div>
                         </div>
