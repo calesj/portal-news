@@ -324,7 +324,6 @@
                                     @error('comment')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    </p>
 
                                     <p class="form-submit mb-0">
                                         <input type="submit" name="submit" id="submit" class="submit"

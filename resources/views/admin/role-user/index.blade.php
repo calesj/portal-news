@@ -28,6 +28,7 @@
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Email') }}</th>
                             <th>{{ __('Role') }}</th>
+                            <th>{{ __('Action') }}</th>
                         </tr>
                         </thead>
                         <tbody>

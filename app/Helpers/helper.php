@@ -90,3 +90,16 @@ function canAccess(mixed $permissions): bool
 
     return false;
 }
+
+/** get admin role */
+function getRole()
+{
+    $role = auth()->guard('admin')->user()->getRoleNames();
+    return $role->first();
+}
+
+/** check user permission */
+function checkPermission(string $permission)
+{
+    return auth()->guard('admin')->user()->hasPermissionTo($permission);
+}

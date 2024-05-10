@@ -44,7 +44,7 @@
                                         </span>
                                     @endforeach
                                     @if($role->name === 'super admin')
-                                            <span class="badge bg-danger text-light">{{ __('All Permissions') }}</span>
+                                            <span class="badge bg-danger text-light">{{ __('All Permissions') }} *</span>
                                     @endif
                                 </td>
                                 <td>

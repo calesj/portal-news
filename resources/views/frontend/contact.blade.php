@@ -11,10 +11,10 @@
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
                             <a href="index.html" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i> Home</a>
+                                <i class="fa fa-home"></i>{{ __('Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="index.html" class="breadcrumbs__url">News</a>
+                            <a href="index.html" class="breadcrumbs__url">{{ __('News') }}</a>
                         </li>
                         <li class="breadcrumbs__item breadcrumbs__item--current">
                             World

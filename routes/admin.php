@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\FooterGridTwoController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LocalizationController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -63,9 +64,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     /** News Routes */
     Route::get('fetch-news-category', [NewsController::class, 'fetchCategory'])->name('fetch-news-category');
 
-    Route::get('news-copy/{id}', [NewsController::class, 'copyNews'])->name('news-copy');
-
     Route::get('toggle-news-status', [NewsController::class, 'toggleNewsStatus'])->name('toggle-news-status');
+
+    Route::get('news-copy/{id}', [NewsController::class, 'copyNews'])->name('news-copy');
+    Route::get('pending-news', [NewsController::class, 'pendingNews'])->name('pending-news');
+    Route::put('approve-news', [NewsController::class, 'approveNews'])->name('approve-news');
     Route::resource('news', NewsController::class);
 
     /** Home Section Setting Routes */
@@ -131,6 +134,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     /** Admin User Routes */
     Route::resource('role-users', RoleUserController::class);
+
+    /** Localization Routes */
+    Route::get('localization', [LocalizationController::class, 'index'])->name('localization.index');
 });
 
 
