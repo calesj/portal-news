@@ -136,7 +136,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     Route::resource('role-users', RoleUserController::class);
 
     /** Localization Routes */
-    Route::get('localization', [LocalizationController::class, 'index'])->name('localization.index');
+    Route::get('admin-localization', [LocalizationController::class, 'adminIndex'])->name('admin-localization.index');
+    Route::get('frontend-localization', [LocalizationController::class, 'frontendIndex'])->name('frontend-localization.index');
+
+    Route::post('generate-localize-string', [LocalizationController::class, 'extractLocalizationStrings'])->name('extract-localization-strings');
+    Route::post('update-lang-string', [LocalizationController::class, 'updateLangString'])->name('update-lang-string');
 });
 
 

@@ -96,9 +96,8 @@
 
                             @if(count($news) === 0)
                                 <div class="text-center w-100">
-                                    <h4> {{ __('No News Found :(') }}</h4>
+                                    <h4> {{ __('No News Found') }} :(</h4>
                                 </div>
-
                             @endif
                         </div>
 

@@ -4,12 +4,12 @@
 
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Categories')}} </h1>
+            <h1> {{__('Admin Localization')}} </h1>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All Categories') }}</h4>
+                <h4> {{ __('All Strings') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"> {{ __('Create New') }} </i>
@@ -29,8 +29,23 @@
                 </ul>
                 <div class="tab-content tab-bordered" id="myTab3Content">
                     @foreach($languages as $language)
+
                         <div class="tab-pane fade show {{ $loop->index === 0 ? 'active' : '' }}"
                              id="home-{{ $language->lang }}" role="tabpanel" aria-labelledby="home-tab2">
+
+                            <div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <form action="">
+                                                <button class="btn btn-primary mx-1">{{ __('Generate Strings') }}</button>
+                                                <button class="btn btn-dark mx-1">{{ __('Translate Strings') }}</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-{{ $language->lang }}">

@@ -156,58 +156,73 @@
                 </li>
             @endif
 
-                @if(canAccess(['setting index']))
-                    <li class="{{ setSidebarActive(['admin.settings.*']) }}">
-                        <a class="nav-link" href="{{ route('admin.settings.index') }}">
-                            <i class="far fa-square"></i>
-                            <span>{{ __('Settings') }}</span>
-                        </a>
-                    </li>
-                @endif
+            @if(canAccess(['setting index']))
+                <li class="{{ setSidebarActive(['admin.settings.*']) }}">
+                    <a class="nav-link" href="{{ route('admin.settings.index') }}">
+                        <i class="far fa-square"></i>
+                        <span>{{ __('Settings') }}</span>
+                    </a>
+                </li>
+            @endif
 
-                @if(canAccess(['access management index']))
-                    <li class="dropdown {{
+            @if(canAccess(['access management index']))
+                <li class="dropdown {{
                         setSidebarActive([
                             'admin.role-users.*',
                             'admin.role.*',
                         ])
                      }}">
-                        <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>
-                            <span>{{ __('Access Management') }}</span></a>
-                        <ul class="dropdown-menu">
-                            <li class="{{ setSidebarActive(['admin.role-users.*']) }}">
-                                <a class="nav-link" href="{{ route('admin.role-users.index') }}">
-                                    <span>{{ __('Roles Users') }}</span>
-                                </a>
-                            </li>
+                    <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>
+                        <span>{{ __('Access Management') }}</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ setSidebarActive(['admin.role-users.*']) }}">
+                            <a class="nav-link" href="{{ route('admin.role-users.index') }}">
+                                <span>{{ __('Roles Users') }}</span>
+                            </a>
+                        </li>
 
-                            <li class="{{ setSidebarActive(['admin.role.*']) }}">
-                                <a class="nav-link" href="{{ route('admin.role.index') }}">
-                                    <span>{{ __('Roles and Permissions') }}</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <li class="{{ setSidebarActive(['admin.role.*']) }}">
+                            <a class="nav-link" href="{{ route('admin.role.index') }}">
+                                <span>{{ __('Roles and Permissions') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
+
+
+            <li class="dropdown {{ setSidebarActive(['admin.frontend-localization.*', 'admin.admin-localization.*']) }}">
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>
+                    <span>{{ __('Localization') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.frontend-localization.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.frontend-localization.index') }}">
+                            <i class="far fa-square"></i>
+                            <span>{{ __('Frontend Lang') }}</span>
+                        </a>
                     </li>
-                @endif
 
-            <li class="{{ setSidebarActive(['admin.settings.*']) }}">
-                <a class="nav-link" href="{{ route('admin.localization.index') }}">
-                    <i class="far fa-square"></i>
-                    <span>{{ __('Localization') }}</span>
-                </a>
+                    <li class="{{ setSidebarActive(['admin.admin-localization.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.admin-localization.index') }}">
+                            <i class="far fa-square"></i>
+                            <span>{{ __('Admin Lang') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
-                    {{--
-                     <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+            {{--
+             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
 
-                     <li class="dropdown">
-                         <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Forms</span></a>
-                         <ul class="dropdown-menu">
-                             <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
-                             <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
-                             <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
-                         </ul>
-                     </li> --}}
+             <li class="dropdown">
+                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Forms</span></a>
+                 <ul class="dropdown-menu">
+                     <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
+                     <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
+                     <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
+                 </ul>
+             </li> --}}
 
         </ul>
     </aside>

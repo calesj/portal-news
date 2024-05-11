@@ -19,6 +19,7 @@ class PermissionsSeeder extends Seeder
 //        Permission::create(['name' => 'news update', 'group_name' => 'News Permissions', 'guard_name' => 'admin']);
 //        Permission::create(['name' => 'news delete', 'group_name' => 'News Permissions', 'guard_name' => 'admin']);
 //        Permission::create(['name' => 'news status', 'group_name' => 'News Permissions', 'guard_name' => 'admin']);
+//        Permission::create(['name' => 'news all-access', 'group_name' => 'News Permissions', 'guard_name' => 'admin']);
 
 //        /** About Permissions */
 //        Permission::create(['name' => 'about index', 'group_name' => 'About Permissions', 'guard_name' => 'admin']);
@@ -71,8 +72,5 @@ class PermissionsSeeder extends Seeder
 //        /** Settings Permissions */
 //        Permission::create(['name' => 'setting index', 'group_name' => 'Settings Permissions', 'guard_name' => 'admin']);
 //        Permission::create(['name' => 'setting delete', 'group_name' => 'Settings Permissions', 'guard_name' => 'admin']);
-
-
-
     }
 }
