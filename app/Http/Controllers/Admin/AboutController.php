@@ -29,7 +29,7 @@ class AboutController extends Controller
 
         About::updateOrCreate(['language' => $request->language], ['content' => $request->content]);
 
-        toast(__('Updated Successfully'), 'success');
+        toast(__('admin.Updated Successfully'), 'success');
 
         return redirect()->back();
     }

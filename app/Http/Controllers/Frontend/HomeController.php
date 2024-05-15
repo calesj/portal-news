@@ -230,14 +230,14 @@ class HomeController extends Controller
         $request->validate([
             'email' => ['required', 'email', 'max:255', 'unique:subscribers,email'],
         ], [
-            'email.unique' => __('Email is already subscribed!')
+            'email.unique' => __('frontend.Email is already subscribed!')
         ]);
 
         $subscriber = new Subscriber();
         $subscriber->email = $request->email;
         $subscriber->save();
 
-        return response(['status' => 'success', 'message' => __('Subscribed Success')]);
+        return response(['status' => 'success', 'message' => __('frontend.Subscribed Success')]);
     }
 
     public function about()
@@ -272,7 +272,7 @@ class HomeController extends Controller
             $mail->message = $request->message;
             $mail->save();
 
-            toast(__('Message sent succesfully!'), 'success');
+            toast(__('frontend.Message sent succesfully!'), 'success');
         } catch (\Exception $e) {
             toast(__($e->getMessage()), 'error');
         }

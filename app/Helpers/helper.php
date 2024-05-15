@@ -20,15 +20,20 @@ function getLanguage()
         return session('language');
     }
 
-    $language = Language::where('default', 1)->first();
+    try {
+        $language = Language::where('default', 1)->first();
 
-    if ($language) {
-        setLanguage($language->lang);
+        if ($language) {
+            setLanguage($language->lang);
+
+            return session('language');
+        }
 
         return session('language');
+    } catch (Exception $e) {
+        setLanguage('pt');
+        return session('language');
     }
-
-    return session('language');
 }
 
 /** set language code in session */

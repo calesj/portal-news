@@ -33,7 +33,7 @@ class HomeSectionSettingController extends Controller
             ]
         );
 
-        toast(__('Updated successfully!'), 'success');
+        toast(__('admin.Updated successfully!'), 'success');
         return redirect()->back();
     }
 }

@@ -4,12 +4,12 @@
 
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Categories')}} </h1>
+            <h1> {{__('Frontend Localization')}} </h1>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All Categories') }}</h4>
+                <h4> {{ __('All Frontend Localization') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"> {{ __('Create New') }} </i>
@@ -41,13 +41,20 @@
                                                   method="post">
                                                 @csrf
                                                 <input type="hidden" name="directory"
-                                                       value="{{ resource_path('views/frontend') }}">
+                                                       value="{{ resource_path('views/frontend') }},{{ app_path('Http/Controllers/Frontend') }},{{ resource_path('views/mail') }}">
                                                 <input type="hidden" name="language_code" value="{{ $language->lang }}">
                                                 <input type="hidden" name="file_name" value="frontend">
                                                 <button type="submit"
                                                         class="btn btn-primary mx-1">{{ __('Generate Strings') }}</button>
                                             </form>
-                                            <button class="btn btn-dark mx-1">{{ __('Translate Strings') }}</button>
+
+                                            <form id="translate-form" action="{{ route('admin.translate-string') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="language_code" value="{{ $language->lang }}">
+                                                <input type="hidden" name="file_name" value="frontend">
+                                                <button type="submit" class="btn btn-dark mx-1 translate-button">{{ __('Translate Strings') }}</button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -173,6 +180,34 @@
                 $('input[name="key"]').val(key)
                 $('input[name="value"]').val(value)
                 $('input[name="file_name"]').val(filename)
+            })
+            $('#translate-form').on('submit', function (e) {
+                e.preventDefault();
+                let formData = $(this).serialize()
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('admin.translate-string') }}",
+                    data: formData,
+                    beforeSend: function () {
+                        $('.translate-button').text('Translating Please Wait...')
+                        $('.translate-button').prop('disabled', true)
+                    },
+                    success: function (data) {
+                        if(data.status == 'success'){
+                            Swal.fire({
+                                title: "Done!",
+                                text: data.message,
+                                icon: "success"
+                            });
+
+                            window.location.reload()
+                        }
+                    },
+
+                    error: function (data) {
+                        console.log(data)
+                    }
+                })
             })
         })
     </script>

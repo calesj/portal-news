@@ -3,27 +3,27 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Ads')}} </h1>
+            <h1> {{__('admin.Ads')}} </h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Update Ads') }}</h4>
+                <h4>{{ __('admin.Update Ads') }}</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.ad.update', 1)}}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <h5>{{ __('Home Page Ads') }}</h5>
+                    <h5>{{ __('admin.Home Page Ads') }}</h5>
                     <div class="form-group">
                         <img src="{{ asset($ad->home_top_bar_ad) }}" width="200px" alt="">
                         <br>
-                        <label for="home_top_bar_ad">{{ __('Top Bar ad') }}</label>
+                        <label for="home_top_bar_ad">{{ __('admin.Top Bar ad') }}</label>
                         <input type="file" name="home_top_bar_ad" class="form-control">
                         @error('home_top_bar_ad')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <label for="home_top_bar_ad_url" class="mt-3">{{ __('Top Bar ad url') }}</label>
+                        <label for="home_top_bar_ad_url" class="mt-3">{{ __('admin.Top Bar ad url') }}</label>
                         <input type="text" name="home_top_bar_ad_url" class="form-control" value="{{ $ad->home_top_bar_ad_url }}">
                         @error('home_top_bar_ad_url')
                             <p class="text-danger">{{ $message }}</p>
@@ -42,13 +42,13 @@
                     <div class="form-group">
                         <img src="{{ asset($ad->home_middle_ad) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Middle ad') }}</label>
+                        <label for="">{{ __('admin.Middle ad') }}</label>
                         <input type="file" name="home_middle_ad" id="name" class="form-control">
                         @error('home_middle_ad')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <label for="home_middle_ad_url" class="mt-3">{{ __('Middle ad url') }}</label>
+                        <label for="home_middle_ad_url" class="mt-3">{{ __('admin.Middle ad url') }}</label>
                         <input type="text" name="home_middle_ad_url" class="form-control" value="{{ $ad->home_middle_ad_url }}">
                         @error('home_middle_ad_url')
                             <p class="text-danger">{{ $message }}</p>
@@ -64,17 +64,17 @@
                         </label>
                     </div>
 
-                    <h5>{{ __('News View Page Ads') }}</h5>
+                    <h5>{{ __('admin.News View Page Ads') }}</h5>
                     <div class="form-group">
                         <img src="{{ asset($ad->view_page_ad) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Bottom ad') }}</label>
+                        <label for="">{{ __('admin.Bottom ad') }}</label>
                         <input type="file" name="view_page_ad" id="name" class="form-control">
                         @error('view_page_ad')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <label for="view_page_ad_url" class="mt-3">{{ __('Bottom ad url') }}</label>
+                        <label for="view_page_ad_url" class="mt-3">{{ __('admin.Bottom ad url') }}</label>
                         <input type="text" name="view_page_ad_url" class="form-control" value="{{ $ad->view_page_ad_url }}">
                         @error('view_page_ad_url')
                             <p class="text-danger">{{ $message }}</p>
@@ -90,17 +90,17 @@
                         </label>
                     </div>
 
-                    <h5>{{ __('News Page Ads') }}</h5>
+                    <h5>{{ __('admin.News Page Ads') }}</h5>
                     <div class="form-group">
                         <img src="{{ asset($ad->news_page_ad) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Bottom ad') }}</label>
+                        <label for="">{{ __('admin.Bottom ad') }}</label>
                         <input type="file" name="news_page_ad" id="name" class="form-control">
                         @error('news_page_ad')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <label for="news_page_ad_url" class="mt-3">{{ __('Bottom ad url') }}</label>
+                        <label for="news_page_ad_url" class="mt-3">{{ __('admin.Bottom ad url') }}</label>
                         <input type="text" name="news_page_ad_url" class="form-control" value="{{ $ad->news_page_ad_url }}">
                         @error('news_page_ad_url')
                             <p class="text-danger">{{ $message }}</p>
@@ -115,17 +115,17 @@
                         </label>
                     </div>
 
-                    <h5>{{ __('Sidebar Ad') }}</h5>
+                    <h5>{{ __('admin.Sidebar Ad') }}</h5>
                     <div class="form-group">
                         <img src="{{ asset($ad->side_bar_ad) }}" width="200px" alt="">
                         <br>
-                        <label for="">{{ __('Sidebar ad') }}</label>
+                        <label for="">{{ __('admin.Sidebar ad') }}</label>
                         <input type="file" name="side_bar_ad" id="name" class="form-control">
                         @error('side_bar_ad')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
 
-                        <label for="news_page_ad_url" class="mt-3">{{ __('Sidebar Ad url') }}</label>
+                        <label for="news_page_ad_url" class="mt-3">{{ __('admin.Sidebar Ad url') }}</label>
                         <input type="text" name="side_bar_ad_url" class="form-control" value="{{ $ad->side_bar_ad_url }}">
                         @error('side_bar_ad_url')
                             <p class="text-danger">{{ $message }}</p>
@@ -141,7 +141,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Update')}}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.Update')}}</button>
                 </form>
             </div>
         </div>

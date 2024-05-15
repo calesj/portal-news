@@ -66,23 +66,23 @@
                 <div class="collapse navbar-collapse justify-content-between" id="main_nav99">
                     <ul class="navbar-nav ml-auto ">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">{{ __('home') }}</a>
+                            <a class="nav-link active" href="index.html">{{ __('frontend.home') }}</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="about-us.html"> {{__('about')}} </a>
+                            <a class="nav-link" href="about-us.html"> {{__('frontend.about')}} </a>
                         </li>
                         <li class="nav-item dropdown has-megamenu">
-                            <a class="nav-link" href="blog.html"> {{__('blog')}} </a>
+                            <a class="nav-link" href="blog.html"> {{__('frontend.blog')}} </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> {{ __('Pages') }} </a>
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> {{ __('frontend.Pages') }} </a>
                             <ul class="dropdown-menu animate fade-up">
                                 <li><a class="dropdown-item icon-arrow" href="blog_details.html"> Blog single detail
                                     </a></li>
                                 <li><a class="dropdown-item" href="404.html"> 404 Error </a>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html"> contact </a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html"> {{ __('Contact') }} </a></li>
                     </ul>
 
 

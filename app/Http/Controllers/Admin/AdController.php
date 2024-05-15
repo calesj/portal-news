@@ -93,7 +93,7 @@ class AdController extends Controller
             'side_bar_ad_url' => $request->side_bar_ad_url,
         ]);
 
-        toast(__('Updated Succesfully'), 'success');
+        toast(__('admin.Updated Succesfully'), 'success');
 
         return redirect()->back();
     }

@@ -11,10 +11,10 @@
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
                             <a href="index.html" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i>{{ __('Home') }}</a>
+                                <i class="fa fa-home"></i>{{ __('frontend.frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
-                            <a href="index.html" class="breadcrumbs__url">{{ __('News') }}</a>
+                            <a href="index.html" class="breadcrumbs__url">{{ __('frontend.News') }}</a>
                         </li>
                         <li class="breadcrumbs__item breadcrumbs__item--current">
                             World
@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group form-group-name">
-                                    <label>{{ __('Your email') }}<span class="required"></span></label>
+                                    <label>{{ __('frontend.Your email') }}<span class="required"></span></label>
                                     <input type="email" class="form-control" name="email" required="">
                                     @error('email')
                                         <p class="text-danger">{{ $message }}</p>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group form-group-name">
-                                    <label>{{ __('Subject') }}<span class="required"></span></label>
+                                    <label>{{ __('frontend.Subject') }}<span class="required"></span></label>
                                     <input type="text" class="form-control" name="subject" required="">
                                     @error('subject')
                                         <p class="text-danger">{{ $message }}</p>
@@ -56,14 +56,14 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>{{ __('Your message ') }}</label>
+                                    <label>{{ __('frontend.Your message ') }}</label>
                                     <textarea class="form-control" rows="8" name="message"></textarea>
                                     @error('message')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('frontend.Submit') }}</button>
                                 </div>
                             </div>
                         </div>

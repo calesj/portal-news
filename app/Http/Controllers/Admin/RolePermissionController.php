@@ -52,7 +52,7 @@ class RolePermissionController extends Controller
         /** Vinculado as permissões a nova rule */
         $role->syncPermissions($request->permissions);
 
-        toast(__('Created Successfully'), 'success');
+        toast(__('admin.Created Successfully'), 'success');
 
         return redirect()->back();
     }
@@ -82,7 +82,7 @@ class RolePermissionController extends Controller
         $role->update(['guard_name' => 'admin', 'name' => $request->role]);
         $role->syncPermissions($request->permissions);
 
-        toast(__('Updated Successfully'), 'success');
+        toast(__('admin.Updated Successfully'), 'success');
 
         return redirect()->back();
     }
@@ -95,11 +95,11 @@ class RolePermissionController extends Controller
         $role = Role::findOrFail($id);
 
         if ($role->name === 'Super Admin') {
-            return response()->json(['status' => 'error', 'message' => __('Can\'t Delete the Super Admin')]);
+            return response()->json(['status' => 'error', 'message' => __('admin.Can\'t Delete the Super Admin')]);
         }
 
         $role->delete();
 
-        return response()->json(['status' => 'success', 'message' => __('Deleted Successfully')]);
+        return response()->json(['status' => 'success', 'message' => __('admin.Deleted Successfully')]);
     }
 }

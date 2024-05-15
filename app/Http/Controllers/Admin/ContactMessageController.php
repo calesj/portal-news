@@ -42,7 +42,7 @@ class ContactMessageController extends Controller
             $makeReplied->replied = 1;
             $makeReplied->save();
 
-            toast(__('Message Sent Successfully'), 'success');
+            toast(__('admin.Message Sent Successfully'), 'success');
         } catch (\Throwable $th) {
             toast(__($th->getMessage()), 'error');
         }

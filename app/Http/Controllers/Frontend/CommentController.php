@@ -29,7 +29,7 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->save();
 
-        toast(__('Comment added successfully'), 'success');
+        toast(__('frontend.Comment added successfully'), 'success');
         return redirect()->back();
     }
 
@@ -51,7 +51,7 @@ class CommentController extends Controller
         $comment->comment = $request->reply;
         $comment->save();
 
-        toast(__('Comment added successfully'), 'success');
+        toast(__('frontend.Comment added successfully'), 'success');
         return redirect()->back();
     }
 
@@ -65,9 +65,9 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($request->id);
         if (Auth::user()->id === $comment->user_id) {
             $comment->delete();
-            return response()->json(['status' => 'success', 'message' => __('Deleted Successfully!')]);
+            return response()->json(['status' => 'success', 'message' => __('frontend.Deleted Successfully!')]);
         }
 
-        return response()->json(['status' => 'error', 'message' => __('Someting went wrong!')]);
+        return response()->json(['status' => 'error', 'message' => __('frontend.Someting went wrong!')]);
     }
 }

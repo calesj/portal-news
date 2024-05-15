@@ -3,19 +3,19 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Footer Grid Three')}} </h1>
+            <h1> {{__('admin.Footer Grid Three')}} </h1>
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{ __('Create link for footer grind three') }}</h4>
+                <h4>{{ __('admin.Create link for footer grind three') }}</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.footer-grid-three.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="">{{ __('Language')}}</label>
+                        <label for="">{{ __('admin.Language')}}</label>
                         <select name="language" id="language-select" class="form-control select2">
-                            <option value="">--{{ __('Select') }}--</option>
+                            <option value="">--{{ __('admin.Select') }}--</option>
                             @foreach($languages as $lang)
                                 <option value="{{ $lang->lang }}">{{$lang->name}}</option>
                             @endforeach
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">{{ __('Name') }}</label>
+                        <label for="name">{{ __('admin.Name') }}</label>
                         <input type="text" name="name" class="form-control">
                         @error('name')
                         <p class="text-danger">{{ $message }}</p>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">{{ __('Url') }}</label>
+                        <label for="name">{{ __('admin.Url') }}</label>
                         <input type="text" name="url" class="form-control">
                         @error('url')
                         <p class="text-danger">{{ $message }}</p>
@@ -42,17 +42,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="status">{{ __('Status')}}</label>
+                        <label for="status">{{ __('admin.Status')}}</label>
                         <select name="status" class="form-control">
-                            <option value="1">{{ __('Active') }}</option>
-                            <option value="0">{{ __('Inactive') }}</option>
+                            <option value="1">{{ __('admin.Active') }}</option>
+                            <option value="0">{{ __('admin.Inactive') }}</option>
                         </select>
                         @error('status')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('Create')}}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.Create')}}</button>
                 </form>
             </div>
         </div>

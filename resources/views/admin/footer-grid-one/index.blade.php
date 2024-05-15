@@ -4,12 +4,12 @@
 
     <section class="section">
         <div class="section-header">
-            <h1> {{__('Footer')}} </h1>
+            <h1> {{__('admin.Footer')}} </h1>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All footer grid one links') }}</h4>
+                <h4> {{ __('admin.All footer grid one links') }}</h4>
             </div>
 
             <div class="card-body">
@@ -34,12 +34,12 @@
                                 <form action="{{ route('admin.footer-grid-one.title') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="">{{ __('Footer Title') }}</label>
+                                        <label for="">{{ __('admin.Footer Title') }}</label>
                                         <input type="text" class="form-control" name="title" value="{{ @$footerTitle->value }}">
                                         <input type="hidden" value="{{ $language->lang }}"  class="form-control" name="language">
                                     </div>
                                     <div class="div-form-group"></div>
-                                    <button type="submit" class="btn btn-primary"> {{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-primary"> {{ __('admin.Save') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -50,10 +50,10 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4> {{ __('All footer grid one links') }}</h4>
+                <h4> {{ __('admin.All footer grid one links') }}</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.footer-grid-one.create') }}" class="btn btn-primary">
-                        <i class="fas fa-plus"> {{ __('Create New') }} </i>
+                        <i class="fas fa-plus"> {{ __('admin.Create New') }} </i>
                     </a>
                 </div>
             </div>
@@ -84,11 +84,11 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Language') }}</th>
-                                            <th>{{ __('Url') }}</th>
-                                            <th>{{ __('Status') }}</th>
-                                            <th>{{ __('Action') }}</th>
+                                            <th>{{ __('admin.Name') }}</th>
+                                            <th>{{ __('admin.Language') }}</th>
+                                            <th>{{ __('admin.Url') }}</th>
+                                            <th>{{ __('admin.Status') }}</th>
+                                            <th>{{ __('admin.Action') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -102,11 +102,11 @@
                                                 <td>
                                                     @if($footer->status === '1')
                                                         <span class="badge badge-success">
-                                                                {{ __('Yes') }}
+                                                                {{ __('admin.Yes') }}
                                                         </span>
                                                     @else
                                                         <span class="badge badge-danger">
-                                                                {{ __('No') }}
+                                                                {{ __('admin.No') }}
                                                         </span>
                                                     @endif
                                                 </td>

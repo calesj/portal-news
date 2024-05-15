@@ -58,7 +58,7 @@ class NewsController extends Controller
         $news->is_approved = $request->is_approve;
         $news->save();
 
-        return response()->json(['status' => 'success', 'message' => __('Updated Successfully')]);
+        return response()->json(['status' => 'success', 'message' => __('admin.Updated Successfully')]);
     }
 
     /**
@@ -106,7 +106,7 @@ class NewsController extends Controller
 
         $news->tags()->attach($tagIds);
 
-        toast(__('Created SuccessFully!'), 'success')->width('350');
+        toast(__('admin.Created SuccessFully!'), 'success')->width('350');
 
         return redirect()->route('admin.news.index');
     }
@@ -125,7 +125,7 @@ class NewsController extends Controller
             $news->{$request->name} = $request->status;
             $news->save();
 
-            return response(['status' => 'success', 'message' => __('Updated successfully!')]);
+            return response(['status' => 'success', 'message' => __('admin.Updated successfully!')]);
         } catch (Throwable $th) {
             throw $th;
         }
@@ -205,7 +205,7 @@ class NewsController extends Controller
         // adicionando o vinculo de tag por tag na noticia
         $news->tags()->attach($tagIds);
 
-        toast(__('Updated SuccessFully!'), 'success')->width('350');
+        toast(__('admin.Updated SuccessFully!'), 'success')->width('350');
 
         return redirect()->route('admin.news.index');
     }
@@ -222,7 +222,7 @@ class NewsController extends Controller
         $news->tags()->delete();
         $news->delete();
 
-        return response()->json(['status' => 'success', 'message' => __('Deleted Successfully!')]);
+        return response()->json(['status' => 'success', 'message' => __('admin.Deleted Successfully!')]);
     }
 
     /**
@@ -236,7 +236,7 @@ class NewsController extends Controller
         $copyNews = $news->replicate();
         $copyNews->save();
 
-        toast(__('Coping Successfully!'), 'success');
+        toast(__('admin.Coping Successfully!'), 'success');
 
         return redirect()->back();
     }
