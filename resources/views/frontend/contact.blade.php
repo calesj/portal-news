@@ -11,7 +11,7 @@
                     <ul class="breadcrumbs bg-light mb-4">
                         <li class="breadcrumbs__item">
                             <a href="index.html" class="breadcrumbs__url">
-                                <i class="fa fa-home"></i>{{ __('frontend.frontend.Home') }}</a>
+                                <i class="fa fa-home"></i>{{ __('frontend.Home') }}</a>
                         </li>
                         <li class="breadcrumbs__item">
                             <a href="index.html" class="breadcrumbs__url">{{ __('frontend.News') }}</a>

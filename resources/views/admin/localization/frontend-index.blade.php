@@ -41,7 +41,7 @@
                                                   method="post">
                                                 @csrf
                                                 <input type="hidden" name="directory"
-                                                       value="{{ resource_path('views/frontend') }},{{ app_path('Http/Controllers/Frontend') }},{{ resource_path('views/mail') }}">
+                                                       value="{{ resource_path('views/frontend') }},{{ app_path('Http/Controllers/Frontend') }},{{ resource_path('views/mail') }},{{ resource_path('views/auth') }}">
                                                 <input type="hidden" name="language_code" value="{{ $language->lang }}">
                                                 <input type="hidden" name="file_name" value="frontend">
                                                 <button type="submit"

@@ -36,8 +36,16 @@
                         </div>
 
                         <ul class="topbar-link" style="display: inline-flex;">
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            @if(!auth()->check())
+                                <li><a href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
+                                <li><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                            @else
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <li><a onclick="event.preventDefault();
+                                                this.closest('form').submit();" href="{{ route('logout') }}">{{ __('frontend.Log Out') }}</a></li>
+                                </form>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -75,7 +83,8 @@
                             <a class="nav-link" href="blog.html"> {{__('frontend.blog')}} </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> {{ __('frontend.Pages') }} </a>
+                            <a class="nav-link dropdown-toggle" href="#"
+                               data-toggle="dropdown"> {{ __('frontend.Pages') }} </a>
                             <ul class="dropdown-menu animate fade-up">
                                 <li><a class="dropdown-item icon-arrow" href="blog_details.html"> Blog single detail
                                     </a></li>
@@ -107,7 +116,8 @@
                                                    id="example-search-input4" name="search">
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
+                                            <button type="submit"
+                                                    class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
