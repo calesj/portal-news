@@ -8,10 +8,10 @@
                         <div class="col-md-4">
                             <div class="widget__footer">
                                 <figure class="image-logo">
-                                    <img src="{{ asset($footerInfo->logo) }}" alt="" class="logo-footer">
+                                    <img src="{{ asset(@$footerInfo->logo) }}" alt="" class="logo-footer">
                                 </figure>
 
-                                <p>{{ $footerInfo->description }}</p>
+                                <p>{{ @$footerInfo->description }}</p>
 
 
                                 <div class="social__media mt-4">
@@ -32,7 +32,7 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        {{ $footerGridOneTitle->value }}
+                                        {{ @$footerGridOneTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
@@ -51,7 +51,7 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        {{ $footerGridTwoTitle->value }}
+                                        {{ @$footerGridTwoTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
@@ -69,7 +69,7 @@
                             <div class="widget__footer">
                                 <div class="dropdown-footer">
                                     <h4 class="footer-title">
-                                        {{ $footerGridThreeTitle->value }}
+                                        {{ @$footerGridThreeTitle->value }}
                                         <span class="fa fa-angle-down"></span>
                                     </h4>
 
@@ -96,7 +96,7 @@
                         <div class="col-md-12">
                             <div class="border-top-1 bg__footer-bottom-section">
                                 <p class="text-white text-center">
-                                    {{ $footerInfo->copyright }}
+                                    {{ @$footerInfo->copyright }}
                                 </p>
                             </div>
                         </div>
