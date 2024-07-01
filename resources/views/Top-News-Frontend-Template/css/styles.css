@@ -17961,6 +17961,10 @@ body.offcanvas-active {
     max-height: 250px;
 }
 
+.list-inline-item a {
+    background-color: var(--colorPrimary);
+}
+
 
 
 

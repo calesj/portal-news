@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h5>contact us</h5>
+                    <h5>{{ __('frontend.contact us') }}</h5>
                     <form action="{{ route('contact.submit') }}" method="post">
                         @csrf
                         <div class="row">
@@ -72,7 +72,7 @@
 
 
                 <div class="col-md-4">
-                    <h5>Info location</h5>
+                    <h5>{{ __('frontend.Info location') }}</h5>
                     <div class="wrap__contact-form-office">
                         <ul class="list-unstyled">
                             <li>
@@ -99,34 +99,15 @@
                         </ul>
 
                         <div class="social__media">
-                            <h5>find us</h5>
+                            <h5>{{ __('frontend.find us') }}</h5>
                             <ul class="list-inline">
-
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social rounded text-white facebook">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social rounded text-white twitter">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social rounded text-white whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social rounded text-white telegram">
-                                        <i class="fa fa-telegram"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="btn btn-social rounded text-white linkedin">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
+                                @foreach($socials as $social)
+                                    <li class="list-inline-item-contact mx-1">
+                                        <a href="{{ $social->url }}" class="btn btn-social rounded text-white facebook">
+                                            <i class="{{ $social->icon }}"></i>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

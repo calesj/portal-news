@@ -50,8 +50,9 @@
                                         <select name="category_section_one" id="" class="form-control select2">
                                             <option value="">--- {{ __('admin.Select') }} ---</option>
 
+
                                             @foreach($categories as $category)
-                                                <option {{ @$homeSectionSettings->category_section_one === $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option {{ $homeSectionSettings->category_section_one == $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,9 +61,8 @@
                                         <label for="">{{ __('admin.Category Section Two')}}</label>
                                         <select name="category_section_two" id="" class="form-control select2">
                                             <option value="">--- {{ __('admin.Select') }} ---</option>
-
                                             @foreach($categories as $category)
-                                                <option {{ @$homeSectionSettings->category_section_two === $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option {{ $homeSectionSettings->category_section_two == $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -73,7 +73,7 @@
                                             <option value="">--- {{ __('admin.Select') }} ---</option>
 
                                             @foreach($categories as $category)
-                                                <option {{ @$homeSectionSettings->category_section_three === $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option {{ $homeSectionSettings->category_section_three == $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -84,7 +84,7 @@
                                             <option value="">--- {{ __('admin.Select') }} ---</option>
 
                                             @foreach($categories as $category)
-                                                <option {{ @$homeSectionSettings->category_section_four === $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option {{ $homeSectionSettings->category_section_four == $category->id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

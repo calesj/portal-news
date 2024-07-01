@@ -6,7 +6,7 @@
             <div class="form-group">
                 <label>Pick Your Color</label>
                 <div class="input-group colorpickerinput">
-                    <input type="text" name="site_color"  class="form-control" value="{{ $settings['site_color'] }}">
+                    <input type="text" name="site_color"  class="form-control" value="{{ @$settings['site_color'] }}">
                     <div class="input-group-append">
                         <div style="cursor: pointer" class="input-group-text">
                             <i class="fas fa-fill-drip"></i>

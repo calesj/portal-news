@@ -23,7 +23,7 @@ class NewsDownloadApiCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:news-download';
+    protected $signature = 'news-save';
 
     /**
      * The console command description.

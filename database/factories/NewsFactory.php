@@ -32,7 +32,7 @@ class NewsFactory extends Factory
             'slug' => fake()->slug,
             'content' => fake()->paragraph,
             'meta_title' => fake()->sentence,
-            'meta_description' => fake()->paragraph,
+            'meta_description' => fake()->sentence,
             'is_breaking_news' => fake()->boolean,
             'show_at_slider' => fake()->boolean,
             'show_at_popular' => fake()->boolean,

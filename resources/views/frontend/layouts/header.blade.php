@@ -41,7 +41,7 @@
                         <ul class="topbar-link" style="display: inline-flex;">
                             @if(!auth()->check())
                                 <li><a href="{{ route('login') }}">{{ __('frontend.Login') }}</a></li>
-                                <li><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
+                                <li style="width: max-content;"><a href="{{ route('register') }}">{{ __('frontend.Register') }}</a></li>
                             @else
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
@@ -70,7 +70,7 @@
                 </div>
                 <figure class="mb-0 mx-auto">
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset($settings['site_logo']) }}" alt="" class="img-fluid logo">
+                        <img src="{{ asset(@$settings['site_logo']) }}" alt="" class="img-fluid logo">
                     </a>
                 </figure>
 
