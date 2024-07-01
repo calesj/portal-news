@@ -167,7 +167,7 @@
         @endforeach
 
         $(document).ready(function () {
-            $('.modal_btn').on('click', function () {
+            $('body').on('click', '.modal_btn', function () {
                 let langCode = $(this).data('langcode')
                 let key = $(this).data('key')
                 let value = $(this).data('value')
@@ -201,8 +201,13 @@
                                 text: data.message,
                                 icon: "success"
                             });
-
                             window.location.reload()
+                        } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: data.message,
+                                    icon: "error"
+                                });
                         }
                     },
 

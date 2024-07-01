@@ -19,7 +19,7 @@ return array (
   'Sidebar Ad' => 'Anúncio da barra lateral',
   'Sidebar ad' => 'Anúncio na barra lateral',
   'Sidebar Ad url' => 'URL do anúncio da barra lateral',
-  'Update' => 'Atualização',
+  'Update' => 'Atualizaçãos',
   'Login' => 'Login',
   'Email' => 'E-mail',
   'Please fill in your email' => 'Por favor, preencha seu e-mail',

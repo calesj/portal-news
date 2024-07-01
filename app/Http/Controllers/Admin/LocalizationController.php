@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -26,7 +27,7 @@ class LocalizationController extends Controller
         return view('admin.localization.frontend-index', compact('languages'));
     }
 
-    public function extractLocalizationStrings(Request $request)
+    public function extractLocalizationStrings(Request $request): RedirectResponse
     {
         $directories = explode(',', $request->directory);
 
@@ -102,35 +103,40 @@ class LocalizationController extends Controller
 
     public function translateString(Request $request)
     {
-        $langCode = $request->language_code;
+        try {
+            $langCode = $request->language_code;
 
-        $languageStrings = trans($request->file_name, [], $langCode);
+            $languageStrings = trans($request->file_name, [], $langCode);
 
-        $keyStrings = array_keys($languageStrings);
+            $keyStrings = array_keys($languageStrings);
 
-        // ['home', 'about']
-        // homeabout
-        $text = implode(' || ', $keyStrings);
+            // ['home', 'about']
+            // homeabout
+            $text = implode(' | ', $keyStrings);
 
-        $response = Http::withHeaders([
-            'X-RapidAPI-Host' => 'microsoft-translator-text.p.rapidapi.com',
-            'X-RapidAPI-Key' => '7d4ef1bfc9msh5e2527c24e30411p1e6c50jsnfe4891f84ec7',
-            'content-type' => 'application/json',
-        ])->post("https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=$langCode&textType=plain&profanityAction=NoAction", [
-            [
-                'Text' => $text
-            ]
-        ]);
+            $response = Http::withHeaders([
+                'X-RapidAPI-Host' => getSetting('site_microsoft_api_host'),
+                'X-RapidAPI-Key' => getSetting('site_microsoft_api_key'),
+                'content-type' => 'application/json',
+            ])->post("https://microsoft-translator-text.p.rapidapi.com/translate?api-version=3.0&to%5B0%5D=$langCode&textType=plain&profanityAction=NoAction", [
+                [
+                    'Text' => $text
+                ]
+            ]);
 
-        $translatedText = json_decode($response->body())[0]->translations[0]->text;
-        $translatedValues = explode(' || ', $translatedText);
+            $translatedText = json_decode($response->body())[0]->translations[0]->text;
 
-        $updatedArray = array_combine($keyStrings, $translatedValues);
+            $translatedValues = explode(' | ', $translatedText);
 
-        $phpArray = "<?php\n\nreturn " . var_export($updatedArray, true) . ";\n";
+            $updatedArray = array_combine($keyStrings, $translatedValues);
 
-        file_put_contents(lang_path($langCode . '/' . $request->file_name . '.php'), $phpArray);
+            $phpArray = "<?php\n\nreturn " . var_export($updatedArray, true) . ";\n";
 
-        return response()->json(['status' => 'success', 'message' => __('admin.Translation is completed.')]);
+            file_put_contents(lang_path($langCode . '/' . $request->file_name . '.php'), $phpArray);
+
+            return response(['status' => 'success', 'message' => __('admin.Translation is completed.')]);
+        } catch (\Throwable $th) {
+            return response(['status' => 'false', 'message' => $th->getMessage()]);
+        }
     }
 }

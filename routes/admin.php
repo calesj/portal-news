@@ -123,6 +123,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
     Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
     Route::put('seo-setting', [SettingController::class, 'updateSeoSetting'])->name('seo-setting.update');
     Route::put('appearence-setting', [SettingController::class, 'updateAppearenceSetting'])->name('general-appearence.update');
+    Route::put('microsoft-api-setting', [SettingController::class, 'updateMicrosoftApiSetting'])->name('microsoft-api-setting.update');
 
     /** Role and Permissions */
     Route::get('role', [RolePermissionController::class, 'index'])->name('role.index');
@@ -137,6 +138,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin.auth
 
     /** Localization Routes */
     Route::get('admin-localization', [LocalizationController::class, 'adminIndex'])->name('admin-localization.index');
+
     Route::get('frontend-localization', [LocalizationController::class, 'frontendIndex'])->name('frontend-localization.index');
 
     Route::post('generate-localize-string', [LocalizationController::class, 'extractLocalizationStrings'])->name('extract-localization-strings');

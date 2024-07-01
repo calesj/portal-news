@@ -164,7 +164,7 @@
         @endforeach
 
         $(document).ready(function() {
-            $('.custom-switch-input').on('click', function () {
+            $('body').on('click', '.custom-switch-input', function () {
                 let id = $(this).data('id')
                 let name = $(this).data('name')
                 let status = $(this).prop('checked') ? 1 : 0

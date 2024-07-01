@@ -62,34 +62,47 @@ class HomeController extends Controller
             'language' => getLanguage()
         ])->first();
 
-        // registros da primeira categoria
-        $categorySectionOne = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_one)
-            ->activeEntries()
-            ->withLocalize()
-            ->orderBy('id', 'DESC')
-            ->take(8)
-            ->get();
+        $categorySectionOne = collect();
+        $categorySectionTwo = collect();
+        $categorySectionThree = collect();
+        $categorySectionFour = collect();
 
-        $categorySectionTwo = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_two)
-            ->activeEntries()
-            ->withLocalize()
-            ->orderBy('id', 'DESC')
-            ->take(5)
-            ->get();
+        if (isset($homeSectionSetting->category_section_one)) {
+            // registros da primeira categoria
+            $categorySectionOne = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_one)
+                ->activeEntries()
+                ->withLocalize()
+                ->orderBy('id', 'DESC')
+                ->take(8)
+                ->get();
+        }
 
-        $categorySectionThree = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_three)
-            ->activeEntries()
-            ->withLocalize()
-            ->orderBy('id', 'DESC')
-            ->take(6)
-            ->get();
+        if (isset($homeSectionSetting->category_section_two)) {
+            $categorySectionTwo = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_two)
+                ->activeEntries()
+                ->withLocalize()
+                ->orderBy('id', 'DESC')
+                ->take(5)
+                ->get();
+        }
 
-        $categorySectionFour = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_four)
-            ->activeEntries()
-            ->withLocalize()
-            ->orderBy('id', 'DESC')
-            ->take(4)
-            ->get();
+        if (isset($homeSectionSetting->category_section_three)) {
+            $categorySectionThree = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_three)
+                ->activeEntries()
+                ->withLocalize()
+                ->orderBy('id', 'DESC')
+                ->take(6)
+                ->get();
+        }
+
+        if (isset($homeSectionSetting->category_section_four)) {
+            $categorySectionFour = News::query()->with(['category', 'author'])->where('category_id', $homeSectionSetting->category_section_four)
+                ->activeEntries()
+                ->withLocalize()
+                ->orderBy('id', 'DESC')
+                ->take(4)
+                ->get();
+        }
 
         //Mais vistos
         $mostViewedNews = News::query()->with(['category', 'author'])

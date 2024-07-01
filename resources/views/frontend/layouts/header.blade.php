@@ -168,7 +168,7 @@
                     <nav class="list-group list-group-flush">
                         <ul class="navbar-nav ">
                             <li class="nav-item">
-                                <a class="nav-link active text-dark" href="{{ route('dashboard') }}">Home</a>
+                                <a class="nav-link active text-dark" href="{{ route('home.index') }}">Home</a>
                             </li>
                                 @foreach($featuredCategories as $category)
                                     <li class="nav-item">

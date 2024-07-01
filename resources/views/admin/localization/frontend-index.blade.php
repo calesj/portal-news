@@ -165,11 +165,11 @@
         @endforeach
 
         $(document).ready(function () {
-            $('.modal_btn').on('click', function () {
-                let langCode = $(this).data('langcode')
-                let key = $(this).data('key')
-                let value = $(this).data('value')
-                let filename = $(this).data('filename')
+            $('body').on('click', '.modal_btn', function () {
+                let langCode = $(this).attr('data-langcode')
+                let key = $(this).attr('data-key')
+                let value = $(this).attr('data-value')
+                let filename = $(this).attr('data-filename')
 
                 $('input[name="lang_code"]').val("")
                 $('input[name="key"]').val("")
@@ -199,8 +199,13 @@
                                 text: data.message,
                                 icon: "success"
                             });
-
                             window.location.reload()
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: data.message,
+                                icon: "error"
+                            });
                         }
                     },
 
