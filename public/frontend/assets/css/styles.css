@@ -17965,12 +17965,16 @@ body.offcanvas-active {
     display: flex;
 }
 
-.pagination .disabled > span{
+.pagination .disabled>span {
     color: black;
     float: left;
     text-decoration: none;
     transition: background-color 0.3s;
     border: 1px solid #eee;
+    border-top-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-left-color: rgb(238, 238, 238);
     margin: 0 4px;
     border-radius: 50%;
     width: 35px;
@@ -17980,12 +17984,16 @@ body.offcanvas-active {
     text-align: center;
 }
 
-.pagination .page-item > span {
+.pagination .page-item>span {
     color: black;
     float: left;
     text-decoration: none;
     transition: background-color 0.3s;
     border: 1px solid #eee;
+    border-top-color: rgb(238, 238, 238);
+    border-right-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(238, 238, 238);
+    border-left-color: rgb(238, 238, 238);
     margin: 0 4px;
     border-radius: 50%;
     width: 35px;
@@ -17995,16 +18003,17 @@ body.offcanvas-active {
     text-align: center;
 }
 
-.pagination .page-item > a {
+.pagination .page-item>a {
     text-align: center;
+
 }
 
 .btn-social {
     background-color: #fff !important;
 }
 
-.btn-social > i {
-    color : var(--colorPrimary) !important;
+.btn-social>i {
+    color: var(--colorPrimary) !important;
 }
 
 .img-fluid.rounded-circle {
@@ -18015,6 +18024,10 @@ body.offcanvas-active {
 
 .wrap__profile-author {
     width: 50% !important;
+}
+
+.wrap__profile-author-detail {
+    position: relative;
 }
 
 .author-wrapper {
@@ -18030,10 +18043,11 @@ body.offcanvas-active {
 .list-inline-item-contact a {
     background-color: var(--colorPrimary) !important;
 }
-
 .list-inline-item-contact a i {
     color: #fff !important;
 }
+
+
 
 
 /*  */

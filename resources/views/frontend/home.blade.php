@@ -9,7 +9,7 @@
     @include('frontend.home-components.hero-slider')
     <!-- End Hero News -->
 
-    @if($ad->home_top_bar_ad_status === 1)
+    @if(!empty($ad->home_top_bar_ad_status) && $ad->home_top_bar_ad_status === 1)
         <a href="{{ $ad->home_top_bar_ad_url }}">
             <div class="large_add_banner">
                 <div class="container">

@@ -321,7 +321,7 @@
                         </div>
                     </aside>
 
-                    @if($ad->home_middle_ad_status === 1)
+                    @if(!empty($ad->home_middle_ad_status) && $ad->home_middle_ad_status === 1)
                         <a href="{{ $ad->home_middle_ad_url }}">
                             <div class="small_add_banner">
                                 <div class="small_add_banner_img">
@@ -513,7 +513,7 @@
                             </div>
                         </aside>
 
-                        @if($ad->side_bar_ad_status === 1)
+                        @if(!empty($ad->side_bar_ad_status) && $ad->side_bar_ad_status === 1)
                             <aside class="wrapper__list__article">
                                 <h4 class="border_section">{{ __('frontend.Advertise') }}</h4>
                                 <a href="{{ $ad->side_bar_ad_url }}">
