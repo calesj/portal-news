@@ -6,7 +6,7 @@
             <div class="form-group">
                 <label>{{ __('admin.Api Microsoft Host') }}</label>
                 <div class="input-group">
-                    <input type="text" name="site_microsoft_api_host"  class="form-control" value="{{ $settings['site_microsoft_api_host'] }}">
+                    <input type="text" name="site_microsoft_api_host"  class="form-control" value="{{ @$settings['site_microsoft_api_host'] }}">
                 </div>
                 @error('site_microsoft_api_host')
                     <p class="text-danger">{{ $message }}</p>
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label>{{ __('admin.Microsoft Api Key') }}</label>
                 <div class="input-group">
-                    <input type="text" name="site_microsoft_api_key"  class="form-control" value="{{ $settings['site_microsoft_api_key'] }}">
+                    <input type="text" name="site_microsoft_api_key"  class="form-control" value="{{ @$settings['site_microsoft_api_key'] }}">
                 </div>
                 @error('site_microsoft_api_key')
                 <p class="text-danger">{{ $message }}</p>

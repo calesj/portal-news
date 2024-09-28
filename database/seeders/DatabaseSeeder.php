@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(HomeSectionSeeder::class);
-        $this->call(NewsSeeder::class);
+        //$this->call(NewsSeeder::class);
         $this->call(AdSeeder::class);
         $this->call(FooterInfoSeeder::class);
 
