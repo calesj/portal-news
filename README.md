@@ -12,6 +12,12 @@
 - **Integração com e-mail e Newsletter:** Sistema de envio de e-mails automatizados e gerenciamento de assinaturas para Newsletter.
 - **Niveis de acesso ACL com Laravel Spatie Permissions
 
+## Tecnologias utilizadas:
+- Laravel
+- Laravel Spatie Permissions
+- Yajra Datatables
+- SweetAlert
+
 ### Tela Inicial
 ![image](https://github.com/user-attachments/assets/bfc13884-5bcb-4520-847e-44efd53a0702)
 
