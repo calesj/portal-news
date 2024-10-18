@@ -10,7 +10,7 @@
 - **Painel Administrativo:** Área exclusiva para gestão de conteúdo e configurações do sistema.
 - **Configurações dinâmicas:** Personalização do site com ajustes de SEO, cores, e outras configurações essenciais.
 - **Integração com e-mail e Newsletter:** Sistema de envio de e-mails automatizados e gerenciamento de assinaturas para Newsletter.
-- **Niveis de acesso ACL com Laravel Spatie Permissions
+- **Niveis de acesso:** ACL com Laravel Spatie Permissions
 
 ## Tecnologias utilizadas:
 - Laravel
